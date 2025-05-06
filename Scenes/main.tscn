@@ -76,7 +76,7 @@ metadata/_custom_type_script = "uid://cluy2etoai2p2"
 
 [sub_resource type="Resource" id="Resource_nay3j"]
 script = ExtResource("4_6iyac")
-text = "It's a door. Do I hear gambling?"
+text = "It's an identical door, also locked. Do I hear gambling?"
 show_key = ""
 show = true
 metadata/_custom_type_script = "uid://bjnyes25dp115"
@@ -97,7 +97,7 @@ metadata/_custom_type_script = "uid://cluy2etoai2p2"
 
 [sub_resource type="Resource" id="Resource_owhal"]
 script = ExtResource("4_6iyac")
-text = "These doors seem quite important compared to the others."
+text = "These doors seem quite important compared to the others. However, I don't have a way to open them yet."
 show_key = ""
 show = true
 metadata/_custom_type_script = "uid://bjnyes25dp115"
@@ -147,7 +147,7 @@ metadata/_custom_type_script = "uid://cluy2etoai2p2"
 
 [sub_resource type="Resource" id="Resource_hibaj"]
 script = ExtResource("4_6iyac")
-text = "A porcelain vase holding a dead flower. It can't have been dead for long... (No dust on the table?)"
+text = "A porcelain vase holding a dead flower. It doesn't seem to have been dead for that long."
 show_key = ""
 show = true
 metadata/_custom_type_script = "uid://bjnyes25dp115"
@@ -161,21 +161,21 @@ metadata/_custom_type_script = "uid://bjnyes25dp115"
 
 [sub_resource type="Resource" id="Resource_ee4r6"]
 script = ExtResource("4_6iyac")
-text = "This painting has been torn, perhaps on purpose. The figure is impossible to make put, perhaps a previous owner of the mansion..?"
+text = "This painting has been torn, perhaps on purpose. The figure is impossible to make out, perhaps it was a previous owner of the mansion..?"
 show_key = ""
 show = true
 metadata/_custom_type_script = "uid://bjnyes25dp115"
 
 [sub_resource type="Resource" id="Resource_jkdf5"]
 script = ExtResource("4_6iyac")
-text = "A bottle with looks and smells to be some alcohol, maybe someone got a bit tipsy during the night."
+text = "A almost empty bottle of what seems to be alcohol. There isn't enough to be worth taking."
 show_key = ""
 show = true
 metadata/_custom_type_script = "uid://bjnyes25dp115"
 
 [sub_resource type="Resource" id="Resource_gt3je"]
 script = ExtResource("4_6iyac")
-text = "A piece of paper? I wonder what it reads."
+text = "A piece of paper? I wonder what it says."
 show_key = ""
 show = true
 metadata/_custom_type_script = "uid://bjnyes25dp115"

@@ -145,10 +145,10 @@ extends Node
 ""
 ]
 @export var jukebox = [
-"Hmm, where's that music coming from? Did someone change the song without my permission? Hold on boys I'm gonna go check real fast just play without me.",
+"Hmm, where's that music coming from? Did someone fiddle with the jukebox? Hold on boys I'm gonna go check real fast, don't play with me.",
 "(Yessss! Now's my chance!)",
 "(I better hide so I avoid any trouble.)",
-"Yeah, that looks like that is the case. Someone changed the track without my permission.",
+"Yeah, that looks like that was the case. Someone changed the track without my permission.",
 "Whatever, I'll just change it back.",
 "(There he goes, back to the table...)",
 ""
@@ -163,8 +163,8 @@ extends Node
 ""
 ]
 @export var jukebox2 = [
-"Alright let's get back to this, looks Curly has made an expected comeback from the looks of things.",
-"(Some time past.)",
+"Alright let's get back to this, looks like Curly has made an unexpected comeback from the looks of things.",
+"(Some time passes.)",
 "We have a winner with Curly taking it with an impressive comeback!",
 "Alright!"
 ]
