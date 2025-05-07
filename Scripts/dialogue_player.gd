@@ -3,6 +3,7 @@ extends Control
 var selected_text
 var printed = ""
 var current_speaker = ""
+var rushing_text
 @export var text_speed = .03
 @onready var text_label = $TextLabel
 @onready var background = $Background
@@ -28,7 +29,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if Global.reading_in_progress: 
-				text_speed = .001
+				rushing_text = true
 				next_message.emit()
 			elif Global.using_item == false:
 				clear_text()
@@ -44,6 +45,7 @@ func on_display_conversation(new_message,speaker, key = null):
 
 #Message is for ONE box of text and no speaker. most things tbh
 func print_message(message):
+	rushing_text = false
 	text_label.text = ""
 	printed = message
 	background.visible = true
@@ -56,7 +58,7 @@ func print_message(message):
 		text_label.visible_ratio = i/length
 		if AudioPlayer.get_node("TalkSound").playing == false:
 			AudioPlayer.get_node("TalkSound").play()
-		await get_tree().create_timer(text_speed).timeout 
+		if !rushing_text: await get_tree().create_timer(text_speed).timeout 
 	text_label.visible_ratio = 1
 	Global.reading_in_progress = false
 	#flag the printing as done so objects can be interacted
@@ -73,6 +75,7 @@ func print_dialogue(message,speaker,key):
 	Global.reading_in_progress = true
 	var counter = 0
 	for line in message:
+		rushing_text = false
 		current_speaker = speaker[counter]
 		if speaker[counter].length() <1:
 			$SpeakerBackground.hide()
@@ -87,7 +90,7 @@ func print_dialogue(message,speaker,key):
 			text_label.visible_ratio = float(i/length)
 			if AudioPlayer.get_node("TalkSound").playing == false:
 				AudioPlayer.get_node("TalkSound").play()
-			await get_tree().create_timer(text_speed).timeout
+			if !rushing_text: await get_tree().create_timer(text_speed).timeout
 		text_label.visible_ratio = 1
 		if line == message[-1]: break 
 		await self.next_message

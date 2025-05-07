@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_057gk")
-text = PackedStringArray("Dummy text post safe unlock lalalala.")
+text = PackedStringArray("He seems both inebriated and in bliss.")
 show = true
-speaker = PackedStringArray("Mark")
+speaker = PackedStringArray("")
 metadata/_custom_type_script = "uid://dm7a2bwo0hbw0"

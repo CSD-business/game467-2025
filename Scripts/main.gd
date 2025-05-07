@@ -85,11 +85,13 @@ func cause_change(key):
 		SignalBus.emit_signal("display_conversation", Cutscenes.markhaterarc,Cutscenes.markhaterarcspeaker)
 	if key == "markgood":
 		SignalBus.emit_signal("display_conversation", Cutscenes.markgivekey, Cutscenes.markgivekeyspeaker, Cutscenes.markgivekeykey)
+		$Manor_Saloon/Mark.switch_resource(load("res://Resources/marktalkpostsafeunlock.tres"))
 	if key == "nothing":
 		SignalBus.emit_signal("display_dialogue", Cutscenes.nothing)
 	if key == "record":
 		SignalBus.emit_signal("display_conversation", Cutscenes.jukebox, Cutscenes.jukeboxspeaker, Cutscenes.jukeboxkey)
 		$"Manor_Casino/Dealer Standing".show()
+		$Manor_Casino/Dealer.hide()
 		$Manor_Casino/Curly.switch_resource(load("res://Resources/curlypostjukebox.tres"))
 
 #Function for changing between all of the rooms in the game

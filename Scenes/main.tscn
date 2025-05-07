@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://b4vadqqj38k7g"]
+[gd_scene load_steps=115 format=3 uid="uid://b4vadqqj38k7g"]
 
 [ext_resource type="Script" uid="uid://b3ek1jmcjy0j6" path="res://Scripts/main.gd" id="1_5wbwr"]
 [ext_resource type="PackedScene" uid="uid://ddnyj3yf6gsgm" path="res://Scenes/empty_clickable.tscn" id="1_8oicw"]
@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://blduoa0sjaq40" path="res://Assets/Audio/SFX/Key.wav" id="22_1w6v2"]
 [ext_resource type="Texture2D" uid="uid://chygavfx4c0pg" path="res://Assets/Images/widebottle.png" id="25_hpc6h"]
 [ext_resource type="PackedScene" uid="uid://viv2isuy4elf" path="res://Scenes/darts_instructions.tscn" id="26_6vcvc"]
+[ext_resource type="Texture2D" uid="uid://c2e7ov6gpixkj" path="res://Assets/Images/bottleslice.png" id="26_hdf80"]
 [ext_resource type="Texture2D" uid="uid://q51q0t3vci7g" path="res://Assets/Images/keynochain.png" id="26_ueoa1"]
 [ext_resource type="Script" uid="uid://djb1c6fnq0or1" path="res://Scripts/black_background.gd" id="27_1w6v2"]
 [ext_resource type="Texture2D" uid="uid://bsto5q1yk2mw3" path="res://Assets/Images/manorcasino.png" id="29_7k868"]
@@ -416,7 +417,7 @@ metadata/_custom_type_script = "uid://bjnyes25dp115"
 
 [sub_resource type="Resource" id="Resource_ptfg5"]
 script = ExtResource("7_fdnlq")
-text = PackedStringArray("Excuse me sir, my name is Logan Ace and I heard you may have a key for a room? ", "Ehhh, key?", "I\'m with Thomas Lan-", "Now you listen here you think you have a \"hic\" a right to take my stuff! I\'m at my darn limit you piece of \"hic!\"", "You Botta get it from Mark now! ", "(Pulls out key and tries to blast Logan.) ", "Ehhh, what\'s up  \'hic\' with my revolver! I\'m know I reloaded it!", "(Looks like this guy might be drunk.)", "I think that can\'t hold bullets. I think I\'m going to need that though.", "Maybe if you get me a better \"hic\"  drink I might give it up. \"hic\" Everything here is so gaaaaaarbage!!")
+text = PackedStringArray("Excuse me sir, my name is Logan Ace and I heard you may have a key for a room? ", "Ehhh, key?", "I\'m with the Timely Re-", "Now you listen here you think you have a \"hic\" a right to take my stuff! I\'m at my darn limit you piece of \"hic!\"", "You Botta get it from Mark now! ", "(Pulls out key and tries to blast Logan.) ", "Ehhh, what\'s up  \'hic\' with my revolver! I\'m know I reloaded it!", "(Looks like this guy might be drunk.)", "I think that can\'t hold bullets. I think I\'m going to need that though.", "Maybe if you get me a better \"hic\"  drink I might give it up. \"hic\" Everything here is so gaaaaaarbage!!")
 show = true
 speaker = PackedStringArray("Logan", "???", "Logan", "???", "Mark", "", "Mark", "Logan", "Logan", "Mark")
 metadata/_custom_type_script = "uid://dm7a2bwo0hbw0"
@@ -463,6 +464,13 @@ show_key = ""
 show = true
 metadata/_custom_type_script = "uid://bjnyes25dp115"
 
+[sub_resource type="Resource" id="Resource_6h1fc"]
+script = ExtResource("4_6iyac")
+text = "That's Mark's \"weapon\", mine for the taking."
+show_key = ""
+show = true
+metadata/_custom_type_script = "uid://bjnyes25dp115"
+
 [sub_resource type="Resource" id="Resource_r7bbj"]
 script = ExtResource("4_fb3mb")
 show = true
@@ -491,7 +499,7 @@ metadata/_custom_type_script = "uid://bjnyes25dp115"
 [sub_resource type="Resource" id="Resource_pfx1i"]
 script = ExtResource("7_fdnlq")
 text = PackedStringArray("The table seems like it\'s against me, but to me that only makes things more interesting!")
-show = false
+show = true
 speaker = PackedStringArray("Gambler")
 metadata/_custom_type_script = "uid://dm7a2bwo0hbw0"
 
@@ -501,6 +509,13 @@ text = PackedStringArray("This game is getting tense, but I\'m liking my odds so
 show = true
 speaker = PackedStringArray("Gambler")
 metadata/_custom_type_script = "uid://dm7a2bwo0hbw0"
+
+[sub_resource type="Resource" id="Resource_vxl7x"]
+script = ExtResource("4_6iyac")
+text = "The dealer of this charade. Seems to know his stuff."
+show_key = ""
+show = true
+metadata/_custom_type_script = "uid://bjnyes25dp115"
 
 [sub_resource type="Resource" id="Resource_f6rfp"]
 script = ExtResource("7_fdnlq")
@@ -949,9 +964,14 @@ inspectable_res = SubResource("Resource_gsvbx")
 
 [node name="Stout Bottle" parent="Manor_Saloon" instance=ExtResource("1_8oicw")]
 position = Vector2(377, 294)
-scale = Vector2(0.56261, 0.659532)
+scale = Vector2(0.5, 0.5)
 inspectable_res = SubResource("Resource_1semv")
 takeable_res = SubResource("Resource_2daye")
+
+[node name="Sprite2D" type="Sprite2D" parent="Manor_Saloon/Stout Bottle"]
+z_index = -1
+position = Vector2(-8, 4)
+texture = ExtResource("26_hdf80")
 
 [node name="Tall Bottle" parent="Manor_Saloon" instance=ExtResource("1_8oicw")]
 position = Vector2(341, 290)
@@ -1002,7 +1022,7 @@ visible = false
 position = Vector2(519, 363)
 rotation = 0.218676
 scale = Vector2(0.464637, 0.56221)
-inspectable_res = SubResource("Resource_8cuat")
+inspectable_res = SubResource("Resource_6h1fc")
 takeable_res = SubResource("Resource_r7bbj")
 talkable_res = SubResource("Resource_h1bgf")
 usable_res = SubResource("Resource_k2e45")
@@ -1062,7 +1082,7 @@ talkable_res = ExtResource("30_e08e2")
 [node name="Dealer" parent="Manor_Casino" instance=ExtResource("1_8oicw")]
 position = Vector2(58, -330)
 scale = Vector2(2, 2)
-inspectable_res = SubResource("Resource_bv80c")
+inspectable_res = SubResource("Resource_vxl7x")
 talkable_res = SubResource("Resource_f6rfp")
 usable_res = SubResource("Resource_jekl6")
 

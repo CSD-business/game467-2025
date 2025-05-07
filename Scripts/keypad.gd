@@ -82,6 +82,9 @@ func _on_button_enter_pressed():
 			$VBoxContainer/MarginContainer/Label.text = $VBoxContainer/MarginContainer/Label.text.replace("180 ", "[color=green]180 [color=red]")
 		if $VBoxContainer/MarginContainer/Label.text.find("1835")>7:
 			$VBoxContainer/MarginContainer/Label.text = $VBoxContainer/MarginContainer/Label.text.replace("1835", "[color=green]1835[/color]")
+		else:$VBoxContainer/MarginContainer/Label.text = "[color=red]" + $VBoxContainer/MarginContainer/Label.text
+			
+			
 		await get_tree().create_timer(1).timeout
 		$VBoxContainer/MarginContainer/Label.text
 		var regex = RegEx.new()
