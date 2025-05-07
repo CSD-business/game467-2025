@@ -21,6 +21,8 @@ func _ready():
 					Global.current_room = "prehistoric"
 				"Manor_Saloon":
 					Global.current_room = "saloon"
+				"Manor_Casino":
+					Global.current_room = "casino"
 			break
 	$BlackBackground.show()
 	SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
