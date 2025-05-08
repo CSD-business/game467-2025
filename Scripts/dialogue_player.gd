@@ -114,6 +114,7 @@ func print_dialogue(message,speaker,key):
 	if key == "jukeboxkey":
 		SignalBus.emit_signal("display_conversation", Cutscenes.jukebox2, Cutscenes.jukeboxspeaker2, Cutscenes.jukeboxkey2)
 		$"../Manor_Casino/Dealer Standing".hide()
+		$"../Manor_Casino/Dealer".show()
 		StoryFlags.has_won_gambling = true
 func _on_mouse_entered():
 	Global.Selected_Object = self
