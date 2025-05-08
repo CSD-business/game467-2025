@@ -174,6 +174,16 @@ extends Node
 "Dealer",
 "Curly"
 ]
+@export var recordfail = [
+"Nothing happens...",
+"Really?",
+"Yes, nothing happens. The jukebox needs money to operate."
+]
+@export var recordfailspeaker = [
+"",
+"Logan",
+""
+]
 
 @export var jukeboxkey = "jukeboxkey"
 @export var jukeboxkey2 = "jukeboxkey2"

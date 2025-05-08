@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Usable" load_steps=2 format=3 uid="uid://cdu3ouhagv5d2"]
+
+[ext_resource type="Script" uid="uid://w0q7anfur22h" path="res://Scripts/usable.gd" id="1_stx7i"]
+
+[resource]
+script = ExtResource("1_stx7i")
+text = "Use"
+show = true
+key = "record"
+metadata/_custom_type_script = "uid://w0q7anfur22h"

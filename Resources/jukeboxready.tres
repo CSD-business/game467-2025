@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inspectable" load_steps=2 format=3 uid="uid://ckj72dfw2bhif"]
+
+[ext_resource type="Script" uid="uid://bjnyes25dp115" path="res://Scripts/inspectable.gd" id="1_8urn3"]
+
+[resource]
+script = ExtResource("1_8urn3")
+text = "The jukebox seems ready to work now."
+show_key = ""
+show = true
+metadata/_custom_type_script = "uid://bjnyes25dp115"

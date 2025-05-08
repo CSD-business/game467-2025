@@ -81,7 +81,7 @@ func print_dialogue(message,speaker,key):
 			$SpeakerBackground.hide()
 		else:
 			$SpeakerBackground.show()
-			print(speaker[counter])
+			#print(speaker[counter])
 		text_speed = .03
 		printed = line
 		text_label.visible_ratio = 0

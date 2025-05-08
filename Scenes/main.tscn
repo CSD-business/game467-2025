@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://b4vadqqj38k7g"]
+[gd_scene load_steps=117 format=3 uid="uid://b4vadqqj38k7g"]
 
 [ext_resource type="Script" uid="uid://b3ek1jmcjy0j6" path="res://Scripts/main.gd" id="1_5wbwr"]
 [ext_resource type="PackedScene" uid="uid://ddnyj3yf6gsgm" path="res://Scenes/empty_clickable.tscn" id="1_8oicw"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://2ett7uv4wvv3" path="res://Assets/Images/silhouette-of-a-standing-male-figure-on-a-transparent-background-png.webp" id="32_e08e2"]
 [ext_resource type="Texture2D" uid="uid://c7mbaghk5tc8q" path="res://Assets/Images/deckofcards.png" id="33_r33sp"]
 [ext_resource type="Texture2D" uid="uid://tao7cajaceqa" path="res://Assets/Images/exitlight.png" id="34_hdf80"]
+[ext_resource type="Resource" uid="uid://bv7h8brolmydk" path="res://Resources/cointakeable.tres" id="36_jwpg7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hptm8"]
 bg_color = Color(0.105882, 0.105882, 0.105882, 0.615686)
@@ -533,16 +534,16 @@ metadata/_custom_type_script = "uid://w0q7anfur22h"
 
 [sub_resource type="Resource" id="Resource_sasc4"]
 script = ExtResource("4_6iyac")
-text = "It's a fancy jukebox covered in playing card suits."
+text = "It's a fancy jukebox covered in playing card suits. I want to put my record in it, but the slot is locked."
 show_key = ""
 show = true
 metadata/_custom_type_script = "uid://bjnyes25dp115"
 
 [sub_resource type="Resource" id="Resource_v1mrv"]
 script = ExtResource("9_6iyac")
-text = ""
+text = "Use"
 show = true
-key = "record"
+key = "coin"
 metadata/_custom_type_script = "uid://w0q7anfur22h"
 
 [sub_resource type="Resource" id="Resource_fd3ed"]
@@ -582,6 +583,13 @@ script = ExtResource("11_jkdf5")
 show = true
 destination = "manor"
 metadata/_custom_type_script = "uid://cluy2etoai2p2"
+
+[sub_resource type="Resource" id="Resource_ihvwq"]
+script = ExtResource("4_6iyac")
+text = "There's something here."
+show_key = ""
+show = true
+metadata/_custom_type_script = "uid://bjnyes25dp115"
 
 [sub_resource type="Gradient" id="Gradient_k12tt"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -712,6 +720,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_hptm8")
 wait_time = 0.1
 
 [node name="Manor" type="Node2D" parent="." groups=["Rooms"]]
+visible = false
 
 [node name="Manorhub" type="Sprite2D" parent="Manor"]
 z_index = -1
@@ -943,7 +952,6 @@ usable_res = SubResource("Resource_b3802")
 enterable_res = SubResource("Resource_fevyy")
 
 [node name="Manor_Saloon" type="Node2D" parent="." groups=["Rooms"]]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Manor_Saloon"]
 z_index = -2
@@ -1122,6 +1130,12 @@ enterable_res = SubResource("Resource_wl4bb")
 texture_filter = 1
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("34_hdf80")
+
+[node name="Coin" parent="Manor_Casino" instance=ExtResource("1_8oicw")]
+position = Vector2(-448, -246)
+scale = Vector2(1.50344, 2.27215)
+inspectable_res = SubResource("Resource_ihvwq")
+takeable_res = ExtResource("36_jwpg7")
 
 [node name="TextBox" type="CanvasLayer" parent="."]
 

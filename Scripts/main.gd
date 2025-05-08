@@ -42,6 +42,7 @@ func _input(event):
 func on_usability_trigger(key):
 	Global.using_item = true
 	var targetkey = key.key
+	print(key.key)
 	#Stall until item is selected
 	await SignalBus.item_chosen
 	if currently_used_item == targetkey:
@@ -49,6 +50,8 @@ func on_usability_trigger(key):
 		$Inventory_UI.remove_item(targetkey)
 		$Inventory_UI.check_inventory()
 		#spend the item and change something
+	elif targetkey == "coin" and currently_used_item == "record":
+		cause_change("recordfail")
 	else: 
 		cause_change("nothing")
 	Global.using_item = false
@@ -76,7 +79,6 @@ func cause_change(key):
 		$"Manor_Prehist/Grug Happy".show()
 		$Manor_Prehist/Dog.hide()
 		$Manor_Prehist/DogNoUse.show()
-		
 		StoryFlags.bone_used = true
 		SaveManager.save_game()  # Save after flag change
 		
@@ -86,6 +88,7 @@ func cause_change(key):
 	if key == "markgood":
 		SignalBus.emit_signal("display_conversation", Cutscenes.markgivekey, Cutscenes.markgivekeyspeaker, Cutscenes.markgivekeykey)
 		$Manor_Saloon/Mark.switch_resource(load("res://Resources/marktalkpostsafeunlock.tres"))
+		$Manor_Saloon/Mark.switch_resource(load("res://Resources/usable.tres"))
 	if key == "nothing":
 		SignalBus.emit_signal("display_dialogue", Cutscenes.nothing)
 	if key == "record":
@@ -93,6 +96,13 @@ func cause_change(key):
 		$"Manor_Casino/Dealer Standing".show()
 		$Manor_Casino/Dealer.hide()
 		$Manor_Casino/Curly.switch_resource(load("res://Resources/curlypostjukebox.tres"))
+	if key == "recordfail":
+		SignalBus.emit_signal("display_conversation", Cutscenes.recordfail, Cutscenes.recordfailspeaker)
+	if key == "coin":
+		print("coin taken")
+		SignalBus.emit_signal("display_dialogue", "The coin fits in the slot, and whirrs gently. I should be able to use the record now.")
+		$Manor_Casino/Jukebox.switch_resource(load("res://Resources/jukeboxready.tres"))
+		$Manor_Casino/Jukebox.switch_resource(load("res://Resources/jukeboxreadyuse.tres"))
 
 #Function for changing between all of the rooms in the game
 #Hardcoded because it's a small game haha
