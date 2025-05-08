@@ -12,8 +12,8 @@ func _ready():
 	SignalBus.connect("inspect_show",on_inspect_show)
 
 	
-	$BlackBackground.show()
-	SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
+	#$BlackBackground.show()
+	#SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	#This is to trigger cutscenes/change item resoureces
@@ -28,13 +28,13 @@ func _input(event):
 		if child is Node2D and child.visible:
 			match child.name:
 				"Manor":
-					Global.current_room = "manor"
+					on_enter_room("manor")
 				"Manor_Prehist":
-					Global.current_room = "prehistoric"
+					on_enter_room("prehistoric")
 				"Manor_Saloon":
-					Global.current_room = "saloon"
+					on_enter_room("saloon")
 				"Manor_Casino":
-					Global.current_room = "casino"
+					on_enter_room("casino")
 			break
 
 #Triggers when "Use" is selected from Clickable Options
