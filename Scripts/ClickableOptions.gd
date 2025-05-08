@@ -68,7 +68,7 @@ func _on_inspect_pressed():
 		print("you checked the safe")
 	self.hide()
 func _on_take_pressed():
-	print(takeable_sound)
+	#print(takeable_sound)
 	$"../ObjectSound".set_stream(takeable_sound)
 	$"../ObjectSound".play()
 	selected_takeable.takeable_res.take_item()

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Takeable" load_steps=3 format=3 uid="uid://bv7h8brolmydk"]
+
+[ext_resource type="Script" uid="uid://b2m6w2fqm504y" path="res://Scripts/takeable.gd" id="1_ys0fg"]
+[ext_resource type="Texture2D" uid="uid://cjc5rmm5rn3mu" path="res://Assets/Images/coin.png" id="2_qndkv"]
+
+[resource]
+script = ExtResource("1_ys0fg")
+show = true
+pick_up_text = "You take the thing. It's a singular coin."
+inspect_text = "I found this coin in the tassels."
+texture = ExtResource("2_qndkv")
+key = "coin"
+metadata/_custom_type_script = "uid://b2m6w2fqm504y"
