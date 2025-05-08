@@ -156,3 +156,27 @@ func check_story_flags():
 	if StoryFlags.has_won_gambling == true and Global.current_room == "manor":
 		StoryFlags.has_won_gambling = false
 		SignalBus.emit_signal("display_conversation", Cutscenes.playtest, Cutscenes.playtestspeaker)
+
+
+func update_visibility_from_flags():
+	if StoryFlags.bone_used:
+		if $Manor_Prehist.has_node("Dog"):
+			$Manor_Prehist/Dog.hide()
+		if $Manor_Prehist.has_node("DogNoUse"):
+			$Manor_Prehist/DogNoUse.show()
+		if $Manor_Prehist.has_node("Cave Key Default"):
+			$Manor_Prehist/"Cave Key Default".hide()
+		if $Manor_Prehist.has_node("Grug Default"):
+			$Manor_Prehist/"Grug Default".hide()
+		if $Manor_Prehist.has_node("Cave Key Takeable"):
+			$Manor_Prehist/"Cave Key Takeable".show()
+		if $Manor_Prehist.has_node("Grug Happy"):
+			$Manor_Prehist/"Grug Happy".show()
+
+	if StoryFlags.has_checked_safe:
+		if $Manor_Saloon.has_node("Mark"):
+			$Manor_Saloon/Mark.switch_resource(load("res://Resources/markhascheckedsafe.tres"))
+
+	if StoryFlags.has_listened_to_walkie:
+		if $Manor_Prehist.has_node("Grug Happy"):
+			$"Manor_Prehist/Grug Happy".switch_resource(load("res://Resources/grugidentity.tres"))

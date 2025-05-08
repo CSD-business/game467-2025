@@ -27,10 +27,14 @@ func apply_save_data():
 	var save_data = load_game_data()
 	if save_data.has("current_room"):
 		var room = save_data["current_room"]
-		SignalBus.emit_signal("enter", room)  # triggers Main.gd's on_enter_room()
+		SignalBus.emit_signal("enter", room)
 
 	# Restore story flags
 	StoryFlags.has_listened_to_walkie = save_data.get("has_listened_to_walkie", false)
 	StoryFlags.bone_used = save_data.get("bone_used", false)
 	StoryFlags.has_checked_safe = save_data.get("has_checked_safe", false)
 	StoryFlags.has_won_gambling = save_data.get("has_won_gambling", false)
+
+	
+	# Update item visibility after all state is loaded
+	get_tree().current_scene.call_deferred("update_visibility_from_flags")
