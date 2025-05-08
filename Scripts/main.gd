@@ -11,19 +11,7 @@ func _ready():
 	# Detect which room is currently visible and store it
 	SignalBus.connect("inspect_show",on_inspect_show)
 
-	SaveManager.apply_save_data()
-	for child in get_children():
-		if child is Node2D and child.visible:
-			match child.name:
-				"Manor":
-					Global.current_room = "manor"
-				"Manor_Prehist":
-					Global.current_room = "prehistoric"
-				"Manor_Saloon":
-					Global.current_room = "saloon"
-				"Manor_Casino":
-					Global.current_room = "casino"
-			break
+	
 	$BlackBackground.show()
 	SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,6 +24,18 @@ func _input(event):
 		SaveManager.save_game()
 	elif event.is_action_pressed("load_game"):
 		SaveManager.apply_save_data()
+	for child in get_children():
+		if child is Node2D and child.visible:
+			match child.name:
+				"Manor":
+					Global.current_room = "manor"
+				"Manor_Prehist":
+					Global.current_room = "prehistoric"
+				"Manor_Saloon":
+					Global.current_room = "saloon"
+				"Manor_Casino":
+					Global.current_room = "casino"
+			break
 
 #Triggers when "Use" is selected from Clickable Options
 #It turns off some click functionality so the game doesn't get confused
