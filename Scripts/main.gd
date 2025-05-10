@@ -12,8 +12,12 @@ func _ready():
 	SignalBus.connect("inspect_show",on_inspect_show)
 
 	
-	#$BlackBackground.show()
-	#SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
+	if StoryFlags.intro_played:
+		$BlackBackground.show()
+		SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
+		StoryFlags.intro_played = false
+	else:
+		print("Skipping intro; already played.")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	#This is to trigger cutscenes/change item resoureces
@@ -181,6 +185,9 @@ func update_visibility_from_flags():
 func on_hide(node_path: String):
 	var node = get_node_or_null(node_path)
 	if node:
-		node.visible = false
+		if node is CanvasItem:
+			node.visible = false
+		else:
+			print("Node is not a visual element, skipping:", node_path)
 	else:
 		print("Warning: Node not found to hide:", node_path)

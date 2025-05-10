@@ -9,6 +9,7 @@ func save_game():
 		"bone_used": StoryFlags.bone_used,
 		"has_checked_safe": StoryFlags.has_checked_safe,
 		"has_won_gambling": StoryFlags.has_won_gambling,
+		"intro_played": StoryFlags.intro_played,
 	}
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var(save_data)
@@ -25,6 +26,8 @@ func load_game_data() -> Dictionary:
 
 func apply_save_data():
 	var save_data = load_game_data()
+
+	# Restore current room first
 	if save_data.has("current_room"):
 		var room = save_data["current_room"]
 		SignalBus.emit_signal("enter", room)
@@ -34,12 +37,27 @@ func apply_save_data():
 	StoryFlags.bone_used = save_data.get("bone_used", false)
 	StoryFlags.has_checked_safe = save_data.get("has_checked_safe", false)
 	StoryFlags.has_won_gambling = save_data.get("has_won_gambling", false)
+	StoryFlags.intro_played = save_data.get("intro_played", false)
 
-	# Emit signal to hide Bone if used
+	# Emit hide signals based on flags
 	if StoryFlags.bone_used:
 		SignalBus.emit_signal("hide", "Manor_Prehist/Bone")
 
+	# Hide DialoguePlayer and its children
+	var dialogue_nodes := [
+		"DialoguePlayer",
+		"DialoguePlayer/TextLabel",
+		"DialoguePlayer/Speaker",
+		"DialoguePlayer/Background",
+		"DialoguePlayer/SpeakerLabel",
+		"DialoguePlayer/SpeakerBackground",
+		"DialoguePlayer/TextTimer"
+	]
+	for path in dialogue_nodes:
+		SignalBus.emit_signal("hide", path)
 
+	# Hide BlackBackground
+	SignalBus.emit_signal("hide", "BlackBackground")
 
-	# Update item visibility after all state is loaded
+	# Update other visibility logic (e.g., character states, items, etc.)
 	get_tree().current_scene.call_deferred("update_visibility_from_flags")
