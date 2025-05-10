@@ -7,7 +7,7 @@ func _ready():
 	SignalBus.connect("usability_trigger",on_usability_trigger)
 	SignalBus.connect("enter",on_enter_room)
 	SignalBus.connect("item_chosen",on_choose_item)
-	
+	SignalBus.connect("hide", on_hide)
 	# Detect which room is currently visible and store it
 	SignalBus.connect("inspect_show",on_inspect_show)
 
@@ -24,18 +24,6 @@ func _input(event):
 		SaveManager.save_game()
 	elif event.is_action_pressed("load_game"):
 		SaveManager.apply_save_data()
-	for child in get_children():
-		if child is Node2D and child.visible:
-			match child.name:
-				"Manor":
-					on_enter_room("manor")
-				"Manor_Prehist":
-					on_enter_room("prehistoric")
-				"Manor_Saloon":
-					on_enter_room("saloon")
-				"Manor_Casino":
-					on_enter_room("casino")
-			break
 
 #Triggers when "Use" is selected from Clickable Options
 #It turns off some click functionality so the game doesn't get confused
@@ -190,3 +178,9 @@ func update_visibility_from_flags():
 	if StoryFlags.has_listened_to_walkie:
 		if $Manor_Prehist.has_node("Grug Happy"):
 			$"Manor_Prehist/Grug Happy".switch_resource(load("res://Resources/grugidentity.tres"))
+func on_hide(node_path: String):
+	var node = get_node_or_null(node_path)
+	if node:
+		node.visible = false
+	else:
+		print("Warning: Node not found to hide:", node_path)

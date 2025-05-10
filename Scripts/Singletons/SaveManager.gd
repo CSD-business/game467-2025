@@ -35,6 +35,11 @@ func apply_save_data():
 	StoryFlags.has_checked_safe = save_data.get("has_checked_safe", false)
 	StoryFlags.has_won_gambling = save_data.get("has_won_gambling", false)
 
-	
+	# Emit signal to hide Bone if used
+	if StoryFlags.bone_used:
+		SignalBus.emit_signal("hide", "Manor_Prehist/Bone")
+
+
+
 	# Update item visibility after all state is loaded
 	get_tree().current_scene.call_deferred("update_visibility_from_flags")

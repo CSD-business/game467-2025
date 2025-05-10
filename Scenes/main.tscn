@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://2ett7uv4wvv3" path="res://Assets/Images/silhouette-of-a-standing-male-figure-on-a-transparent-background-png.webp" id="32_e08e2"]
 [ext_resource type="Texture2D" uid="uid://c7mbaghk5tc8q" path="res://Assets/Images/deckofcards.png" id="33_r33sp"]
 [ext_resource type="Texture2D" uid="uid://tao7cajaceqa" path="res://Assets/Images/exitlight.png" id="34_hdf80"]
-[ext_resource type="Resource" uid="uid://bv7h8brolmydk" path="res://Resources/cointakeable.tres" id="36_jwpg7"]
+[ext_resource type="Resource" path="res://Resources/cointakeable.tres" id="36_jwpg7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hptm8"]
 bg_color = Color(0.105882, 0.105882, 0.105882, 0.615686)
@@ -209,30 +209,6 @@ key = "walkie"
 take_sound = ExtResource("17_cbgmd")
 metadata/_custom_type_script = "uid://b2m6w2fqm504y"
 
-[sub_resource type="Resource" id="Resource_536cc"]
-script = ExtResource("4_6iyac")
-text = "I hope this isn't a human bone..."
-show_key = ""
-show = true
-metadata/_custom_type_script = "uid://bjnyes25dp115"
-
-[sub_resource type="Resource" id="Resource_kqrg6"]
-script = ExtResource("4_fb3mb")
-show = true
-pick_up_text = "You take the bone."
-inspect_text = "Perhaps that dog might like this..."
-texture = ExtResource("16_h1bgf")
-key = "bone"
-take_sound = ExtResource("19_cbgmd")
-metadata/_custom_type_script = "uid://b2m6w2fqm504y"
-
-[sub_resource type="Resource" id="Resource_k2e45"]
-script = ExtResource("9_6iyac")
-text = ""
-show = false
-key = ""
-metadata/_custom_type_script = "uid://w0q7anfur22h"
-
 [sub_resource type="Resource" id="Resource_1w6v2"]
 script = ExtResource("4_6iyac")
 text = "It's a bucket. Suprisingly, made of metal."
@@ -321,6 +297,13 @@ texture = ExtResource("18_b3802")
 key = "first_key"
 metadata/_custom_type_script = "uid://b2m6w2fqm504y"
 
+[sub_resource type="Resource" id="Resource_k2e45"]
+script = ExtResource("9_6iyac")
+text = ""
+show = false
+key = ""
+metadata/_custom_type_script = "uid://w0q7anfur22h"
+
 [sub_resource type="Resource" id="Resource_8cuat"]
 script = ExtResource("4_6iyac")
 text = "There's a key around the dog's collar. Since it's happy with the bone, perhaps I can snatch it..."
@@ -365,6 +348,23 @@ text = PackedStringArray("Arf! Arf!", "(That should do it!)", "Me Dog like you! 
 show = true
 speaker = PackedStringArray("Dog", "Logan", "Grug", "Dog", "Grug", "Logan", "Logan", "Grug", "Grug", "Logan", "Logan")
 metadata/_custom_type_script = "uid://dm7a2bwo0hbw0"
+
+[sub_resource type="Resource" id="Resource_536cc"]
+script = ExtResource("4_6iyac")
+text = "I hope this isn't a human bone..."
+show_key = ""
+show = true
+metadata/_custom_type_script = "uid://bjnyes25dp115"
+
+[sub_resource type="Resource" id="Resource_kqrg6"]
+script = ExtResource("4_fb3mb")
+show = true
+pick_up_text = "You take the bone."
+inspect_text = "Perhaps that dog might like this..."
+texture = ExtResource("16_h1bgf")
+key = "bone"
+take_sound = ExtResource("19_cbgmd")
+metadata/_custom_type_script = "uid://b2m6w2fqm504y"
 
 [sub_resource type="Resource" id="Resource_cblf0"]
 script = ExtResource("4_6iyac")
@@ -802,7 +802,6 @@ usable_res = SubResource("Resource_b3802")
 enterable_res = SubResource("Resource_fevyy")
 
 [node name="Manor_Prehist" type="Node2D" parent="." groups=["Rooms"]]
-visible = false
 
 [node name="Manor_Prehisthub" type="Sprite2D" parent="Manor_Prehist"]
 z_index = -1
@@ -837,20 +836,6 @@ enterable_res = SubResource("Resource_fevyy")
 position = Vector2(-1.07288e-05, -7.51019e-06)
 scale = Vector2(0.741423, 0.674021)
 texture = ExtResource("15_h1bgf")
-
-[node name="Bone" parent="Manor_Prehist" instance=ExtResource("1_8oicw")]
-position = Vector2(386, 210)
-scale = Vector2(0.6, 0.66)
-inspectable_res = SubResource("Resource_536cc")
-takeable_res = SubResource("Resource_kqrg6")
-talkable_res = SubResource("Resource_h1bgf")
-usable_res = SubResource("Resource_k2e45")
-enterable_res = SubResource("Resource_fevyy")
-
-[node name="Sprite2D" type="Sprite2D" parent="Manor_Prehist/Bone"]
-position = Vector2(-1.07288e-05, -7.51019e-06)
-scale = Vector2(0.741423, 0.674021)
-texture = ExtResource("16_h1bgf")
 
 [node name="Bucket" parent="Manor_Prehist" instance=ExtResource("1_8oicw")]
 position = Vector2(372, 324)
@@ -951,7 +936,22 @@ talkable_res = SubResource("Resource_aa8k8")
 usable_res = SubResource("Resource_b3802")
 enterable_res = SubResource("Resource_fevyy")
 
+[node name="Bone" parent="Manor_Prehist" instance=ExtResource("1_8oicw")]
+position = Vector2(386, 210)
+scale = Vector2(0.6, 0.66)
+inspectable_res = SubResource("Resource_536cc")
+takeable_res = SubResource("Resource_kqrg6")
+talkable_res = SubResource("Resource_h1bgf")
+usable_res = SubResource("Resource_k2e45")
+enterable_res = SubResource("Resource_fevyy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Manor_Prehist/Bone"]
+position = Vector2(-1.07288e-05, -7.51019e-06)
+scale = Vector2(0.741423, 0.674021)
+texture = ExtResource("16_h1bgf")
+
 [node name="Manor_Saloon" type="Node2D" parent="." groups=["Rooms"]]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Manor_Saloon"]
 z_index = -2
