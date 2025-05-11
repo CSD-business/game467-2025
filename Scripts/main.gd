@@ -12,12 +12,10 @@ func _ready():
 	SignalBus.connect("inspect_show",on_inspect_show)
 
 	
-	#if StoryFlags.intro_played:
-		#$BlackBackground.show()
-		#SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
-		#StoryFlags.intro_played = false
-	#else:
-		#print("Skipping intro; already played.")
+	#$BlackBackground.show()
+	#SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	#This is to trigger cutscenes/change item resoureces
@@ -65,6 +63,11 @@ func cause_change(key):
 		$"Manor/Right Door".switch_resource(load("res://Resources/casino_unlocked_inspectable.tres"))
 		$"Manor/Right Door".switch_resource(load("res://Resources/usable.tres"))
 		SignalBus.emit_signal("display_dialogue", Cutscenes.unlock_casino_door)	
+		StoryFlags.casino_unlocked = true
+		if $Manor_Saloon.has_node("Saloon Key"):
+			$Manor_Saloon/"Saloon Key".hide()
+		SaveManager.save_game()
+	
 	if key == "bone":
 		SignalBus.emit_signal("display_dialogue", Cutscenes.give_dog_bone)
 		$"Manor_Prehist/Cave Key Default".hide()
@@ -78,11 +81,20 @@ func cause_change(key):
 		
 	if key == "markbad":
 		$Manor/Alcohol.switch_resource(load("res://Resources/alcoholbad.tres"))
-		SignalBus.emit_signal("display_conversation", Cutscenes.markhaterarc,Cutscenes.markhaterarcspeaker)
+		SignalBus.emit_signal("display_conversation", Cutscenes.markhaterarc, Cutscenes.markhaterarcspeaker)
+		StoryFlags.stout_used = true
+		if $Manor_Saloon.has_node("Stout Bottle"):
+			$Manor_Saloon/"Stout Bottle".hide()
+		SaveManager.save_game()
 	if key == "markgood":
 		SignalBus.emit_signal("display_conversation", Cutscenes.markgivekey, Cutscenes.markgivekeyspeaker, Cutscenes.markgivekeykey)
 		$Manor_Saloon/Mark.switch_resource(load("res://Resources/marktalkpostsafeunlock.tres"))
 		$Manor_Saloon/Mark.switch_resource(load("res://Resources/usable.tres"))
+		StoryFlags.tall_used = true
+		if $Manor_Saloon.has_node("Tall Bottle"):
+			$Manor_Saloon/"Tall Bottle".hide()
+		SaveManager.save_game()
+	
 	if key == "nothing":
 		SignalBus.emit_signal("display_dialogue", Cutscenes.nothing)
 	if key == "record":
@@ -191,6 +203,22 @@ func update_visibility_from_flags():
 			$"Manor/Middle Door".switch_resource(load("res://Resources/usable.tres"))
 		if $Manor_Prehist.has_node("Cave Key Takeable"):
 			$Manor_Prehist/"Cave Key Takeable".hide()
+	if StoryFlags.stout_used:
+		if $Manor_Saloon.has_node("Stout Bottle"):
+			$Manor_Saloon/"Stout Bottle".hide()
+	if StoryFlags.tall_used:
+		if $Manor_Saloon.has_node("Tall Bottle"):
+			$Manor_Saloon/"Tall Bottle".hide()
+	if StoryFlags.casino_unlocked:
+		if $Manor.has_node("Right Door"):
+			$"Manor/Right Door".switch_resource(load("res://Resources/casino_unlocked_enterable.tres"))
+			$"Manor/Right Door".switch_resource(load("res://Resources/casino_unlocked_inspectable.tres"))
+			$"Manor/Right Door".switch_resource(load("res://Resources/usable.tres"))
+		if $Manor_Saloon.has_node("Saloon Key"):
+			$Manor_Saloon/"Saloon Key".hide()
+
+
+
 
 func on_hide(node_path: String):
 	var node = get_node_or_null(node_path)

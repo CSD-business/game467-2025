@@ -9,8 +9,13 @@ func save_game():
 		"bone_used": StoryFlags.bone_used,
 		"has_checked_safe": StoryFlags.has_checked_safe,
 		"has_won_gambling": StoryFlags.has_won_gambling,
-		"intro_played": StoryFlags.intro_played,
 		"saloon_unlocked": StoryFlags.saloon_unlocked,
+		"stout_used": StoryFlags.stout_used,
+		"tall_used": StoryFlags.tall_used,
+		"casino_unlocked": StoryFlags.casino_unlocked,
+
+
+
 
 	}
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -41,24 +46,18 @@ func apply_save_data():
 	StoryFlags.has_won_gambling = save_data.get("has_won_gambling", false)
 	StoryFlags.intro_played = save_data.get("intro_played", false)
 	StoryFlags.saloon_unlocked = save_data.get("saloon_unlocked", false)
+	StoryFlags.stout_used = save_data.get("stout_used", false)
+	StoryFlags.tall_used = save_data.get("tall_used", false)
+	StoryFlags.casino_unlocked = save_data.get("casino_unlocked", false)
+
+
+
 
 
 	# Emit hide signals based on flags
 	if StoryFlags.bone_used:
 		SignalBus.emit_signal("hide", "Manor_Prehist/Bone")
 
-	# Hide DialoguePlayer and its children
-	var dialogue_nodes := [
-		"DialoguePlayer",
-		"DialoguePlayer/TextLabel",
-		"DialoguePlayer/Speaker",
-		"DialoguePlayer/Background",
-		"DialoguePlayer/SpeakerLabel",
-		"DialoguePlayer/SpeakerBackground",
-		"DialoguePlayer/TextTimer"
-	]
-	for path in dialogue_nodes:
-		SignalBus.emit_signal("hide", path)
 
 	# Hide BlackBackground
 	SignalBus.emit_signal("hide", "BlackBackground")
