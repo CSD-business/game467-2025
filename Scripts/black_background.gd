@@ -12,13 +12,15 @@ func _process(delta):
 
 func fade_transition():
 	show()
-	for i in range(100):
-		print(i)
-		modulate.a = i/100
-		await get_tree().create_timer(transition_time/100).timeout
+	$AnimationPlayer.play("Fade2Black")
+	#for i in range(100):
+		#print(i)
+		#modulate.a = i/100
+		#await get_tree().create_timer(transition_time/100).timeout
 	await get_tree().create_timer(1).timeout
-	for i in range(100):
-		print(i)
-		modulate.a = 1-(i/100)
-		await get_tree().create_timer(transition_time/100).timeout
+	#for i in range(100):
+		#print(i)
+		#modulate.a = 1-(i/100)
+		#await get_tree().create_timer(transition_time/100).timeout
+	$AnimationPlayer.play("Fade2Clear")
 	hide()

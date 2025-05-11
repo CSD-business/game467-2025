@@ -129,6 +129,8 @@ func cause_change(key):
 func on_enter_room(destination):
 	#$BlackBackground.fade_transition()
 	#await get_tree().create_timer(1)
+	$BlackBackground/AnimationPlayer.play("Fade2Black")
+	await get_tree().create_timer(1).timeout
 	if destination == "prehistoric":
 		$Manor.hide()
 		$Manor_Saloon.hide()
@@ -162,6 +164,8 @@ func on_enter_room(destination):
 		$Manor_Saloon.hide()
 		$Manor_Casino.show()
 		Global.current_room = "casino"
+	await get_tree().create_timer(0.5).timeout
+	$BlackBackground/AnimationPlayer.play("Fade2Clear")
 
 
 func on_choose_item(itemkey):
