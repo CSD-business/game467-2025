@@ -102,6 +102,10 @@ func cause_change(key):
 		$"Manor_Casino/Dealer Standing".show()
 		$Manor_Casino/Dealer.hide()
 		$Manor_Casino/Curly.switch_resource(load("res://Resources/curlypostjukebox.tres"))
+		StoryFlags.record_used = true
+		if $Manor_Casino.has_node("Record"):
+			$Manor_Casino/Record.hide()
+		SaveManager.save_game()
 	if key == "recordfail":
 		SignalBus.emit_signal("display_conversation", Cutscenes.recordfail, Cutscenes.recordfailspeaker)
 	if key == "coin":
@@ -109,6 +113,11 @@ func cause_change(key):
 		SignalBus.emit_signal("display_dialogue", "The coin fits in the slot, and whirrs gently. I should be able to use the record now.")
 		$Manor_Casino/Jukebox.switch_resource(load("res://Resources/jukeboxready.tres"))
 		$Manor_Casino/Jukebox.switch_resource(load("res://Resources/jukeboxreadyuse.tres"))
+		
+		StoryFlags.coin_taken = true
+		if $Manor_Casino.has_node("Coin"):
+			$Manor_Casino/Coin.hide()
+		SaveManager.save_game()
 
 #Function for changing between all of the rooms in the game
 #Hardcoded because it's a small game haha
@@ -216,7 +225,9 @@ func update_visibility_from_flags():
 			$"Manor/Right Door".switch_resource(load("res://Resources/usable.tres"))
 		if $Manor_Saloon.has_node("Saloon Key"):
 			$Manor_Saloon/"Saloon Key".hide()
-
+	if StoryFlags.record_used:
+		if $Manor_Casino.has_node("Record"):
+			$Manor_Casino/Record.hide()
 
 
 

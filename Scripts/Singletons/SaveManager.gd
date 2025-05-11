@@ -13,6 +13,10 @@ func save_game():
 		"stout_used": StoryFlags.stout_used,
 		"tall_used": StoryFlags.tall_used,
 		"casino_unlocked": StoryFlags.casino_unlocked,
+		"coin_taken": StoryFlags.coin_taken,
+		"record_used": StoryFlags.record_used,
+
+
 
 
 
@@ -49,6 +53,9 @@ func apply_save_data():
 	StoryFlags.stout_used = save_data.get("stout_used", false)
 	StoryFlags.tall_used = save_data.get("tall_used", false)
 	StoryFlags.casino_unlocked = save_data.get("casino_unlocked", false)
+	StoryFlags.coin_taken = save_data.get("coin_taken", false)
+	StoryFlags.record_used = save_data.get("record_used", false)
+
 
 
 

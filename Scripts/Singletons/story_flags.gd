@@ -9,3 +9,5 @@ extends Node
 @export var stout_used := false
 @export var tall_used := false
 @export var casino_unlocked := false
+@export var coin_taken := false
+@export var record_used := false
