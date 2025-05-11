@@ -278,7 +278,7 @@ layout_mode = 2
 theme = ExtResource("1_qocc5")
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
-text = "1992"
+text = "1111"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -300,7 +300,7 @@ layout_mode = 2
 theme = ExtResource("1_qocc5")
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
-text = "hansel"
+text = "aaaaaa"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -320,7 +320,7 @@ layout_mode = 2
 theme = ExtResource("1_qocc5")
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
-text = "♥"
+text = "%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -537,7 +537,7 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.221665, 0.221665, 0.221665, 0.666667)
+color = Color(0, 0, 0, 0.803922)
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Done" to="." method="_on_done_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Enter" to="." method="_on_enter_pressed"]
