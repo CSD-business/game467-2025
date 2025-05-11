@@ -47,6 +47,12 @@ func on_display_conversation(new_message,speaker, key = null):
 func print_message(message):
 	rushing_text = false
 	text_label.text = ""
+	if message.contains("[procyear]"):
+		message = "The paper looks like a search warrant for the mansion that somone was task to investigate. It was issued on the year " + Global.year_code + "."
+	if message.contains("[procname]"):
+		message = "After being played, the name ''" + Global.name_code + "'' is inscribed on it. Neat."
+	if message.contains("[symbol]"):
+		message = "The blue card in this otherwise all red deck has a " + Global.symbol_code + " symbol on it."
 	printed = message
 	background.visible = true
 	Global.reading_in_progress = true
@@ -105,17 +111,18 @@ func print_dialogue(message,speaker,key):
 	if key == "markgivekeykey":
 		$"../Manor_Saloon/Saloon Key".show()
 	if key == "unlocksafekey":
-		print("unlock the safe yay")
-		print("heres the wine")
-		load("res://Resources/safe_unlockedtake.tres").take_item()
-		await get_tree().create_timer(.2).timeout
-		print("here's the record")
 		load("res://Resources/record.tres").take_item()
+		await get_tree().create_timer(.2).timeout
+		load("res://Resources/safe_unlockedtake.tres").take_item()
 	if key == "jukeboxkey":
 		SignalBus.emit_signal("display_conversation", Cutscenes.jukebox2, Cutscenes.jukeboxspeaker2, Cutscenes.jukeboxkey2)
 		$"../Manor_Casino/Dealer Standing".hide()
 		$"../Manor_Casino/Dealer".show()
 		StoryFlags.has_won_gambling = true
+	if key == "jukeboxkey2":
+		load("res://Resources/recordleftover.tres").take_item()
+	if key == "curlythankyou":
+		load("res://Resources/main_door_key.tres").take_item()
 func _on_mouse_entered():
 	Global.Selected_Object = self
 

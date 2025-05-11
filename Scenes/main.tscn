@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://b4vadqqj38k7g"]
+[gd_scene load_steps=119 format=3 uid="uid://b4vadqqj38k7g"]
 
 [ext_resource type="Script" uid="uid://b3ek1jmcjy0j6" path="res://Scripts/main.gd" id="1_5wbwr"]
 [ext_resource type="PackedScene" uid="uid://ddnyj3yf6gsgm" path="res://Scenes/empty_clickable.tscn" id="1_8oicw"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://k0tsknmxk3yq" path="res://Assets/Images/manor_prehistoric.png" id="11_fdnlq"]
 [ext_resource type="Script" uid="uid://cluy2etoai2p2" path="res://Scripts/enterable.gd" id="11_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://bg4k64qid20s4" path="res://Assets/Images/walkie.png" id="15_h1bgf"]
+[ext_resource type="PackedScene" uid="uid://cg62f4xu4ampk" path="res://Scenes/final_keypad.tscn" id="15_k2e45"]
 [ext_resource type="Texture2D" uid="uid://dyrn4kry4y3ou" path="res://Assets/Images/bucket.png" id="16_b3802"]
 [ext_resource type="Texture2D" uid="uid://juxdv0n06ve3" path="res://Assets/Images/bone.png" id="16_h1bgf"]
 [ext_resource type="AudioStream" uid="uid://c7we5t1quw8el" path="res://Assets/Audio/SFX/Paper.wav" id="16_u50mg"]
@@ -99,10 +100,17 @@ metadata/_custom_type_script = "uid://cluy2etoai2p2"
 
 [sub_resource type="Resource" id="Resource_owhal"]
 script = ExtResource("4_6iyac")
-text = "These doors seem quite important compared to the others. However, I don't have a way to open them yet."
+text = "These doors seem quite important compared to the others. There's two keyholes on it instead of one, and the door itself feels more intricately designed."
 show_key = ""
 show = true
 metadata/_custom_type_script = "uid://bjnyes25dp115"
+
+[sub_resource type="Resource" id="Resource_k8rh3"]
+script = ExtResource("9_6iyac")
+text = ""
+show = true
+key = "main_key"
+metadata/_custom_type_script = "uid://w0q7anfur22h"
 
 [sub_resource type="Resource" id="Resource_uv6w5"]
 script = ExtResource("11_jkdf5")
@@ -175,6 +183,14 @@ show_key = ""
 show = true
 metadata/_custom_type_script = "uid://bjnyes25dp115"
 
+[sub_resource type="Gradient" id="Gradient_pdsj5"]
+colors = PackedColorArray(0, 0, 0, 0.784314, 0.577008, 0.577008, 0.577008, 0.784314)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ee4r6"]
+gradient = SubResource("Gradient_pdsj5")
+width = 649
+height = 864
+
 [sub_resource type="Resource" id="Resource_gt3je"]
 script = ExtResource("4_6iyac")
 text = "A piece of paper? I wonder what it says."
@@ -186,7 +202,7 @@ metadata/_custom_type_script = "uid://bjnyes25dp115"
 script = ExtResource("4_fb3mb")
 show = true
 pick_up_text = "You snatch the paper up."
-inspect_text = "The paper looks like a search warrant for the mansion that somone was task to investigate."
+inspect_text = "The paper looks like a search warrant for the mansion that somone was task to investigate. It was issued on the year [procyear]."
 texture = ExtResource("8_k12tt")
 key = "note"
 take_sound = ExtResource("16_u50mg")
@@ -482,14 +498,6 @@ key = "casino_key"
 take_sound = ExtResource("22_1w6v2")
 metadata/_custom_type_script = "uid://b2m6w2fqm504y"
 
-[sub_resource type="Gradient" id="Gradient_pdsj5"]
-colors = PackedColorArray(0, 0, 0, 0.784314, 0.577008, 0.577008, 0.577008, 0.784314)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ee4r6"]
-gradient = SubResource("Gradient_pdsj5")
-width = 649
-height = 864
-
 [sub_resource type="Resource" id="Resource_55jeb"]
 script = ExtResource("4_6iyac")
 text = "Let's try to crack this safe. "
@@ -557,7 +565,7 @@ metadata/_custom_type_script = "uid://bjnyes25dp115"
 script = ExtResource("4_fb3mb")
 show = true
 pick_up_text = "These cards are interesting. One has a unique blue back."
-inspect_text = "Interestingly, the back of the blue card has a [procedural] suit."
+inspect_text = "Interestingly, the back of the blue card has a [symbol] suit."
 texture = ExtResource("33_r33sp")
 key = "cards"
 metadata/_custom_type_script = "uid://b2m6w2fqm504y"
@@ -720,7 +728,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_hptm8")
 wait_time = 0.1
 
 [node name="Manor" type="Node2D" parent="." groups=["Rooms"]]
-visible = false
 
 [node name="Manorhub" type="Sprite2D" parent="Manor"]
 z_index = -1
@@ -753,7 +760,7 @@ enterable_res = SubResource("Resource_ovafv")
 position = Vector2(433, 323)
 scale = Vector2(2.66515, 1.77381)
 inspectable_res = SubResource("Resource_owhal")
-usable_res = SubResource("Resource_dmskm")
+usable_res = SubResource("Resource_k8rh3")
 enterable_res = SubResource("Resource_uv6w5")
 
 [node name="Rug" parent="Manor" instance=ExtResource("1_8oicw")]
@@ -800,6 +807,20 @@ takeable_res = SubResource("Resource_k12tt")
 talkable_res = SubResource("Resource_h1bgf")
 usable_res = SubResource("Resource_b3802")
 enterable_res = SubResource("Resource_fevyy")
+
+[node name="FinalKeypad" parent="Manor" instance=ExtResource("15_k2e45")]
+visible = false
+offset_left = 426.0
+offset_top = 309.0
+offset_right = 426.0
+offset_bottom = 309.0
+
+[node name="Mask" type="Sprite2D" parent="Manor/FinalKeypad"]
+z_index = -1
+position = Vector2(6.11717, 15.1983)
+rotation = -1.5708
+scale = Vector2(1.00045, 1.0011)
+texture = SubResource("GradientTexture2D_ee4r6")
 
 [node name="Manor_Prehist" type="Node2D" parent="." groups=["Rooms"]]
 visible = false
@@ -952,6 +973,7 @@ scale = Vector2(0.741423, 0.674021)
 texture = ExtResource("16_h1bgf")
 
 [node name="Manor_Saloon" type="Node2D" parent="." groups=["Rooms"]]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Manor_Saloon"]
 z_index = -2
@@ -1014,6 +1036,14 @@ inspectable_res = SubResource("Resource_qax2n")
 visible = false
 position = Vector2(428, 260)
 scale = Vector2(0.440074, 0.440074)
+
+[node name="Mask" type="Sprite2D" parent="Manor_Saloon/DartsInstructions"]
+z_index = -1
+position = Vector2(2.10095, 146.72)
+rotation = -1.57081
+scale = Vector2(2.27091, 2.28909)
+skew = 1.3113e-05
+texture = SubResource("GradientTexture2D_ee4r6")
 
 [node name="Saloon Sign" parent="Manor_Saloon" instance=ExtResource("1_8oicw")]
 position = Vector2(532, 75)

@@ -1,0 +1,565 @@
+[gd_scene load_steps=8 format=3 uid="uid://cg62f4xu4ampk"]
+
+[ext_resource type="Script" uid="uid://bgqd130u6eobe" path="res://Scripts/final_keypad.gd" id="1_lo004"]
+[ext_resource type="Theme" uid="uid://c7h5nluxkqdya" path="res://UIThemes/DefaultFont.tres" id="1_qocc5"]
+[ext_resource type="StyleBox" uid="uid://bqs0vijtaxymq" path="res://UIThemes/keypadbutton.tres" id="2_lo004"]
+[ext_resource type="Texture2D" uid="uid://bw0yvi1lggahf" path="res://Assets/Images/uparrow.png" id="3_5ky5s"]
+[ext_resource type="Shader" uid="uid://cw37qyh8xwwi" path="res://Assets/Fonts/keypadshaer.gdshader" id="4_pgmle"]
+[ext_resource type="Texture2D" uid="uid://b6swyi0sfho3l" path="res://Assets/Images/downarrow.png" id="5_nul2o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxi41"]
+shader = ExtResource("4_pgmle")
+shader_parameter/is_on = false
+
+[node name="FinalKeypad" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_lo004")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -365.5
+offset_top = -183.0
+offset_right = 365.5
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Done" type="Button" parent="VBoxContainer/HBoxContainer"]
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_qocc5")
+theme_override_font_sizes/font_size = 24
+text = "Done"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(540, 0)
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Enter" type="Button" parent="VBoxContainer/HBoxContainer"]
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_qocc5")
+theme_override_font_sizes/font_size = 24
+text = "Enter"
+
+[node name="UpArrows" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Filler" type="MarginContainer" parent="VBoxContainer/UpArrows"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+mouse_filter = 0
+
+[node name="DateArrows" type="MarginContainer" parent="VBoxContainer/UpArrows"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/UpArrows/DateArrows"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="DateXxxx" type="MarginContainer" parent="VBoxContainer/UpArrows/DateArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+
+[node name="Date1U" type="Button" parent="VBoxContainer/UpArrows/DateArrows/HBoxContainer/DateXxxx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal_mirrored = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("3_5ky5s")
+
+[node name="DatexXxx" type="MarginContainer" parent="VBoxContainer/UpArrows/DateArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+
+[node name="Date2U" type="Button" parent="VBoxContainer/UpArrows/DateArrows/HBoxContainer/DatexXxx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal_mirrored = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("3_5ky5s")
+
+[node name="DatexxXx" type="MarginContainer" parent="VBoxContainer/UpArrows/DateArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+
+[node name="Date3U" type="Button" parent="VBoxContainer/UpArrows/DateArrows/HBoxContainer/DatexxXx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal_mirrored = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("3_5ky5s")
+
+[node name="DatexxxX" type="MarginContainer" parent="VBoxContainer/UpArrows/DateArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+
+[node name="Date4U" type="Button" parent="VBoxContainer/UpArrows/DateArrows/HBoxContainer/DatexxxX"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal_mirrored = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("3_5ky5s")
+
+[node name="Filler2" type="MarginContainer" parent="VBoxContainer/UpArrows"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+mouse_filter = 0
+
+[node name="NameArrows" type="MarginContainer" parent="VBoxContainer/UpArrows"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/UpArrows/NameArrows"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 0
+
+[node name="NameXxxxxx" type="MarginContainer" parent="VBoxContainer/UpArrows/NameArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+
+[node name="Name1U" type="Button" parent="VBoxContainer/UpArrows/NameArrows/HBoxContainer/NameXxxxxx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal_mirrored = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("3_5ky5s")
+icon_alignment = 1
+
+[node name="NamexXxxxx" type="MarginContainer" parent="VBoxContainer/UpArrows/NameArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+
+[node name="Name2U" type="Button" parent="VBoxContainer/UpArrows/NameArrows/HBoxContainer/NamexXxxxx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("3_5ky5s")
+icon_alignment = 1
+
+[node name="NamexxXxxx" type="MarginContainer" parent="VBoxContainer/UpArrows/NameArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+
+[node name="Name3U" type="Button" parent="VBoxContainer/UpArrows/NameArrows/HBoxContainer/NamexxXxxx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("3_5ky5s")
+icon_alignment = 1
+
+[node name="NamexxxXxx" type="MarginContainer" parent="VBoxContainer/UpArrows/NameArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+
+[node name="Name4U" type="Button" parent="VBoxContainer/UpArrows/NameArrows/HBoxContainer/NamexxxXxx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("3_5ky5s")
+icon_alignment = 1
+
+[node name="NamexxxxXx" type="MarginContainer" parent="VBoxContainer/UpArrows/NameArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+
+[node name="Name5U" type="Button" parent="VBoxContainer/UpArrows/NameArrows/HBoxContainer/NamexxxxXx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("3_5ky5s")
+icon_alignment = 1
+
+[node name="NamexxxxxX" type="MarginContainer" parent="VBoxContainer/UpArrows/NameArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+
+[node name="Name6U" type="Button" parent="VBoxContainer/UpArrows/NameArrows/HBoxContainer/NamexxxxxX"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("3_5ky5s")
+icon_alignment = 1
+
+[node name="Filler3" type="MarginContainer" parent="VBoxContainer/UpArrows"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SymbolArrows" type="MarginContainer" parent="VBoxContainer/UpArrows"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/UpArrows/SymbolArrows"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 0
+
+[node name="SymbolU" type="Button" parent="VBoxContainer/UpArrows/SymbolArrows/MarginContainer"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal_mirrored = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("3_5ky5s")
+
+[node name="Filler4" type="MarginContainer" parent="VBoxContainer/UpArrows"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="Texts" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Texts"]
+z_index = -2
+layout_mode = 2
+color = Color(0.507314, 0.507315, 0.507314, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Texts"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Year" type="MarginContainer" parent="VBoxContainer/Texts/HBoxContainer"]
+custom_minimum_size = Vector2(207, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer/Texts/HBoxContainer/Year"]
+material = SubResource("ShaderMaterial_bxi41")
+layout_mode = 2
+theme = ExtResource("1_qocc5")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "1992"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Texts/HBoxContainer/Year"]
+z_index = -1
+custom_minimum_size = Vector2(207, 0)
+layout_mode = 2
+color = Color(0.60183, 0.316747, 0.316747, 1)
+
+[node name="Name" type="MarginContainer" parent="VBoxContainer/Texts/HBoxContainer"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer/Texts/HBoxContainer/Name"]
+material = SubResource("ShaderMaterial_bxi41")
+layout_mode = 2
+theme = ExtResource("1_qocc5")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "hansel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Texts/HBoxContainer/Name"]
+z_index = -1
+layout_mode = 2
+color = Color(0.60183, 0.316747, 0.590758, 1)
+
+[node name="Symbol" type="MarginContainer" parent="VBoxContainer/Texts/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer/Texts/HBoxContainer/Symbol"]
+material = SubResource("ShaderMaterial_bxi41")
+layout_mode = 2
+theme = ExtResource("1_qocc5")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "♥"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Texts/HBoxContainer/Symbol"]
+z_index = -1
+layout_mode = 2
+color = Color(0.515776, 0.316747, 0.60183, 1)
+
+[node name="DownArrows" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Filler" type="MarginContainer" parent="VBoxContainer/DownArrows"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+mouse_filter = 0
+
+[node name="DateArrows" type="MarginContainer" parent="VBoxContainer/DownArrows"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/DownArrows/DateArrows"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="DateXxxx" type="MarginContainer" parent="VBoxContainer/DownArrows/DateArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+
+[node name="Date1D" type="Button" parent="VBoxContainer/DownArrows/DateArrows/HBoxContainer/DateXxxx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal_mirrored = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("5_nul2o")
+
+[node name="DatexXxx" type="MarginContainer" parent="VBoxContainer/DownArrows/DateArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+
+[node name="Date2D" type="Button" parent="VBoxContainer/DownArrows/DateArrows/HBoxContainer/DatexXxx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal_mirrored = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("5_nul2o")
+
+[node name="DatexxXx" type="MarginContainer" parent="VBoxContainer/DownArrows/DateArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+
+[node name="Date3D" type="Button" parent="VBoxContainer/DownArrows/DateArrows/HBoxContainer/DatexxXx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal_mirrored = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("5_nul2o")
+
+[node name="DatexxxX" type="MarginContainer" parent="VBoxContainer/DownArrows/DateArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+
+[node name="Date4D" type="Button" parent="VBoxContainer/DownArrows/DateArrows/HBoxContainer/DatexxxX"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal_mirrored = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("5_nul2o")
+
+[node name="Filler2" type="MarginContainer" parent="VBoxContainer/DownArrows"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+mouse_filter = 0
+
+[node name="NameArrows" type="MarginContainer" parent="VBoxContainer/DownArrows"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/DownArrows/NameArrows"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 0
+
+[node name="NameXxxxxx" type="MarginContainer" parent="VBoxContainer/DownArrows/NameArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+
+[node name="Name1D" type="Button" parent="VBoxContainer/DownArrows/NameArrows/HBoxContainer/NameXxxxxx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal_mirrored = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("5_nul2o")
+icon_alignment = 1
+
+[node name="NamexXxxxx" type="MarginContainer" parent="VBoxContainer/DownArrows/NameArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+
+[node name="Name2D" type="Button" parent="VBoxContainer/DownArrows/NameArrows/HBoxContainer/NamexXxxxx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("5_nul2o")
+icon_alignment = 1
+
+[node name="NamexxXxxx" type="MarginContainer" parent="VBoxContainer/DownArrows/NameArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+
+[node name="Name3D" type="Button" parent="VBoxContainer/DownArrows/NameArrows/HBoxContainer/NamexxXxxx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("5_nul2o")
+icon_alignment = 1
+
+[node name="NamexxxXxx" type="MarginContainer" parent="VBoxContainer/DownArrows/NameArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+
+[node name="Name4D" type="Button" parent="VBoxContainer/DownArrows/NameArrows/HBoxContainer/NamexxxXxx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("5_nul2o")
+icon_alignment = 1
+
+[node name="NamexxxxXx" type="MarginContainer" parent="VBoxContainer/DownArrows/NameArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+
+[node name="Name5D" type="Button" parent="VBoxContainer/DownArrows/NameArrows/HBoxContainer/NamexxxxXx"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("5_nul2o")
+icon_alignment = 1
+
+[node name="NamexxxxxX" type="MarginContainer" parent="VBoxContainer/DownArrows/NameArrows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 0
+
+[node name="Name6D" type="Button" parent="VBoxContainer/DownArrows/NameArrows/HBoxContainer/NamexxxxxX"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("5_nul2o")
+icon_alignment = 1
+
+[node name="Filler3" type="MarginContainer" parent="VBoxContainer/DownArrows"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SymbolArrows" type="MarginContainer" parent="VBoxContainer/DownArrows"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/DownArrows/SymbolArrows"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 0
+
+[node name="SymbolD" type="Button" parent="VBoxContainer/DownArrows/SymbolArrows/MarginContainer"]
+z_index = 2
+layout_mode = 2
+theme_override_styles/pressed = ExtResource("2_lo004")
+theme_override_styles/normal_mirrored = ExtResource("2_lo004")
+theme_override_styles/normal = ExtResource("2_lo004")
+icon = ExtResource("5_nul2o")
+
+[node name="Filler4" type="MarginContainer" parent="VBoxContainer/DownArrows"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+custom_minimum_size = Vector2(750, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -200.0
+offset_right = 375.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.221665, 0.221665, 0.221665, 0.666667)
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Done" to="." method="_on_done_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Enter" to="." method="_on_enter_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpArrows/DateArrows/HBoxContainer/DateXxxx/Date1U" to="." method="_on_date_1u_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpArrows/DateArrows/HBoxContainer/DatexXxx/Date2U" to="." method="_on_date_2u_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpArrows/DateArrows/HBoxContainer/DatexxXx/Date3U" to="." method="_on_date_3u_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpArrows/DateArrows/HBoxContainer/DatexxxX/Date4U" to="." method="_on_date_4u_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpArrows/NameArrows/HBoxContainer/NameXxxxxx/Name1U" to="." method="_on_name_1u_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpArrows/NameArrows/HBoxContainer/NamexXxxxx/Name2U" to="." method="_on_name_2u_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpArrows/NameArrows/HBoxContainer/NamexxXxxx/Name3U" to="." method="_on_name_3u_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpArrows/NameArrows/HBoxContainer/NamexxxXxx/Name4U" to="." method="_on_name_4u_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpArrows/NameArrows/HBoxContainer/NamexxxxXx/Name5U" to="." method="_on_name_5u_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpArrows/NameArrows/HBoxContainer/NamexxxxxX/Name6U" to="." method="_on_name_6u_pressed"]
+[connection signal="pressed" from="VBoxContainer/UpArrows/SymbolArrows/MarginContainer/SymbolU" to="." method="_on_symbol_u_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownArrows/DateArrows/HBoxContainer/DateXxxx/Date1D" to="." method="_on_date_1d_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownArrows/DateArrows/HBoxContainer/DatexXxx/Date2D" to="." method="_on_date_2d_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownArrows/DateArrows/HBoxContainer/DatexxXx/Date3D" to="." method="_on_date_3d_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownArrows/DateArrows/HBoxContainer/DatexxxX/Date4D" to="." method="_on_date_4d_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownArrows/NameArrows/HBoxContainer/NameXxxxxx/Name1D" to="." method="_on_name_1d_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownArrows/NameArrows/HBoxContainer/NamexXxxxx/Name2D" to="." method="_on_name_2d_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownArrows/NameArrows/HBoxContainer/NamexxXxxx/Name3D" to="." method="_on_name_3d_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownArrows/NameArrows/HBoxContainer/NamexxxXxx/Name4D" to="." method="_on_name_4d_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownArrows/NameArrows/HBoxContainer/NamexxxxXx/Name5D" to="." method="_on_name_5d_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownArrows/NameArrows/HBoxContainer/NamexxxxxX/Name6D" to="." method="_on_name_6d_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownArrows/SymbolArrows/MarginContainer/SymbolD" to="." method="_on_symbol_d_pressed"]

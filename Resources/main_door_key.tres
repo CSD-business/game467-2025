@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Takeable" load_steps=3 format=3 uid="uid://b65ten3evjivl"]
+
+[ext_resource type="Script" uid="uid://b2m6w2fqm504y" path="res://Scripts/takeable.gd" id="1_oj7yc"]
+[ext_resource type="Texture2D" uid="uid://ck80r08fn8d3j" path="res://Assets/Images/key.png" id="2_t6xs0"]
+
+[resource]
+script = ExtResource("1_oj7yc")
+show = true
+pick_up_text = "It's the key Curly gave me after helping him."
+inspect_text = "It's the key Curly gave me after helping him."
+texture = ExtResource("2_t6xs0")
+key = "main_key"
+metadata/_custom_type_script = "uid://b2m6w2fqm504y"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Takeable" load_steps=3 format=3 uid="uid://debifcwsl8xh5"]
+
+[ext_resource type="Script" uid="uid://b2m6w2fqm504y" path="res://Scripts/takeable.gd" id="1_mu4vr"]
+[ext_resource type="Texture2D" uid="uid://damdvk14mv6tj" path="res://Assets/Images/recordinvsize.png" id="2_t426f"]
+
+[resource]
+script = ExtResource("1_mu4vr")
+show = true
+pick_up_text = "You take the record... And you shouldn't be reading this!"
+inspect_text = "After being played, the name [procname] is inscribed on it. Neat."
+texture = ExtResource("2_t426f")
+key = "skibidi rizz"
+metadata/_custom_type_script = "uid://b2m6w2fqm504y"

@@ -34,6 +34,7 @@ func check_inventory():
 #EX: if its key matched something
 func remove_item(itemkey):
 	for slot in $GridContainer.get_children():
-		if slot.item.key == itemkey:
-			slot.remove_item()
-			break
+		if !null: 
+			if slot.item.key == itemkey:
+				slot.remove_item()
+				break

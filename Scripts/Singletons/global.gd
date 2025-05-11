@@ -16,3 +16,8 @@ var inventory = []
 @export var using_item : bool
 
 @export var in_menu : bool
+
+#codes for the procedural puzzle defined at ready but should be saved
+@export var year_code   : String
+@export var name_code   : String
+@export var symbol_code : String

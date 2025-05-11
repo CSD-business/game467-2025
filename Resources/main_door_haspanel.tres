@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inspectable" load_steps=2 format=3 uid="uid://b81jih445olts"]
+
+[ext_resource type="Script" uid="uid://bjnyes25dp115" path="res://Scripts/inspectable.gd" id="1_41qf6"]
+
+[resource]
+script = ExtResource("1_41qf6")
+text = "Let's look at this panel."
+show_key = "main_doors"
+show = true
+metadata/_custom_type_script = "uid://bjnyes25dp115"

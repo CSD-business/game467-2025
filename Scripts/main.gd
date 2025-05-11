@@ -10,7 +10,7 @@ func _ready():
 	SignalBus.connect("hide", on_hide)
 	# Detect which room is currently visible and store it
 	SignalBus.connect("inspect_show",on_inspect_show)
-
+	randomizecodes()
 	
 	#$BlackBackground.show()
 	#SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
@@ -105,6 +105,7 @@ func cause_change(key):
 		StoryFlags.record_used = true
 		if $Manor_Casino.has_node("Record"):
 			$Manor_Casino/Record.hide()
+		$Manor_Casino/Jukebox.switch_resource(load("res://Resources/usable.tres"))
 		SaveManager.save_game()
 	if key == "recordfail":
 		SignalBus.emit_signal("display_conversation", Cutscenes.recordfail, Cutscenes.recordfailspeaker)
@@ -118,6 +119,10 @@ func cause_change(key):
 		if $Manor_Casino.has_node("Coin"):
 			$Manor_Casino/Coin.hide()
 		SaveManager.save_game()
+	if key == "main_key":
+		SignalBus.emit_signal("display_dialogue", "You and Curly both put your keys in, and a panel opens. Better get a closer look, this looks tough...")
+		$"Manor/Main Doors".switch_resource(load("res://Resources/main_door_haspanel.tres"))
+		$"Manor/Main Doors".switch_resource(load("res://Resources/usable.tres"))
 
 #Function for changing between all of the rooms in the game
 #Hardcoded because it's a small game haha
@@ -171,6 +176,10 @@ func on_inspect_show(show_key):
 		Global.in_menu = true
 		await get_tree().create_timer(1.3).timeout 
 		$Manor_Saloon/DartsInstructions.show()
+	if show_key == "main_doors":
+		Global.in_menu = true
+		await get_tree().create_timer(1.3).timeout 
+		$Manor/FinalKeypad.show()
 		
 #Function to trigger cutscenes/change item resoureces
 func check_story_flags():
@@ -180,8 +189,7 @@ func check_story_flags():
 		$Manor_Saloon/Mark.switch_resource(load("res://Resources/markhascheckedsafe.tres"))
 	if StoryFlags.has_won_gambling == true and Global.current_room == "manor":
 		StoryFlags.has_won_gambling = false
-		SignalBus.emit_signal("display_conversation", Cutscenes.playtest, Cutscenes.playtestspeaker)
-
+		SignalBus.emit_signal("display_conversation", Cutscenes.curlythankyou, Cutscenes.curlythankyouspeaker, "curlythankyou")
 
 func update_visibility_from_flags():
 	if StoryFlags.bone_used:
@@ -240,3 +248,54 @@ func on_hide(node_path: String):
 			print("Node is not a visual element, skipping:", node_path)
 	else:
 		print("Warning: Node not found to hide:", node_path)
+
+func randomizecodes():
+	Global.year_code = Years[randi_range(0,14)]
+	Global.name_code = Names[randi_range(0,14)]
+	Global.symbol_code = Symbols[randi_range(0,3)]
+	print("Solution is " + Global.year_code + " " + Global.name_code + " " + Global.symbol_code )
+	
+
+#code indexes
+var Years = [
+	"2008",
+	"2001",
+	"2025",
+	"1921",
+	"1945",
+	"2021",
+	"2024",
+	"1999",
+	"2020",
+	"2005",
+	"2002",
+	"2004",
+	"2007",
+	"2013",
+	"2016"
+]
+
+var Names = [
+	"hunter",
+	"mullen",
+	"fulton",
+	"decker",
+	"foster",
+	"madden",
+	"oliver",
+	"dawson",
+	"ramsey",
+	"barker",
+	"tucker",
+	"hooper",
+	"fisher",
+	"conley",
+	"wright"
+]
+
+var Symbols = [
+	"♠",
+	"♥",
+	"♣",
+	"♦"
+]
