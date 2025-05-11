@@ -193,18 +193,34 @@ extends Node
 ]
 
 @export var curlythankyou = [
-	"Alright, here's my end of the deal.",
-	"You've earned it, one of the keys that the main door needs.",
-	"And the other...?",
-	"I have it! Let's unlock that door you want open oh-so-badly.",
-	"(Why didn't he just give me both of the keys then...?)",
-	"Here you go."
+	"So who are you anyway, Curly? What are you doing out here?",
+	"Hmm, I think it's time I properly introduce myself. My name is Curly and I currently reside in this mansion.",
+	"Does that make you the owner then?",
+	"Not the owner, but just in the same situation as you.",
+	"I've been stuck in this place for years with no way out and no help to do so.",
+	"Why didn't you just ask me? I currently have the same goal as you.",
+	"Because I'm bored, I've tried everything in this place and even with your help there would be no change in the outcome.",
+	"So, I pretended to the bartender and a player at the casino just for the fun of it.",
+	"Well what about that last room, you check for anything in there?",
+	"Can't get in, even though I have the keys, there's... something else. I doubt there is even anything helpful in there.",
+	"Well I ain't giving up! There's gotta be something in there and a way we can get out.",
+	"(I bet I know something that he doesn't to help us open that door.)",
+	"Can we try those keys atleast?",
+	"Knock yourself out. Here's one, and I'll put mine in at the same time."
 ]
 @export var curlythankyouspeaker = [
+	"Logan",
+	"Curly",
+	"Logan",
 	"Curly",
 	"Curly",
 	"Logan",
 	"Curly",
+	"Curly",
+	"Logan",
+	"Curly",
+	"Logan",
+	"Logan",
 	"Logan",
 	"Curly"
 ]
