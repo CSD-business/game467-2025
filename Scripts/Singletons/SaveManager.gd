@@ -10,6 +10,8 @@ func save_game():
 		"has_checked_safe": StoryFlags.has_checked_safe,
 		"has_won_gambling": StoryFlags.has_won_gambling,
 		"intro_played": StoryFlags.intro_played,
+		"saloon_unlocked": StoryFlags.saloon_unlocked,
+
 	}
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var(save_data)
@@ -38,6 +40,8 @@ func apply_save_data():
 	StoryFlags.has_checked_safe = save_data.get("has_checked_safe", false)
 	StoryFlags.has_won_gambling = save_data.get("has_won_gambling", false)
 	StoryFlags.intro_played = save_data.get("intro_played", false)
+	StoryFlags.saloon_unlocked = save_data.get("saloon_unlocked", false)
+
 
 	# Emit hide signals based on flags
 	if StoryFlags.bone_used:

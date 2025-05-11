@@ -12,12 +12,12 @@ func _ready():
 	SignalBus.connect("inspect_show",on_inspect_show)
 
 	
-	if StoryFlags.intro_played:
-		$BlackBackground.show()
-		SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
-		StoryFlags.intro_played = false
-	else:
-		print("Skipping intro; already played.")
+	#if StoryFlags.intro_played:
+		#$BlackBackground.show()
+		#SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
+		#StoryFlags.intro_played = false
+	#else:
+		#print("Skipping intro; already played.")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	#This is to trigger cutscenes/change item resoureces
@@ -58,6 +58,8 @@ func cause_change(key):
 		$"Manor/Middle Door".switch_resource(load("res://Resources/saloon_unlocked_inspectable.tres"))
 		$"Manor/Middle Door".switch_resource(load("res://Resources/usable.tres"))
 		SignalBus.emit_signal("display_dialogue", Cutscenes.unlock_saloon_door)
+		StoryFlags.saloon_unlocked = true
+		SaveManager.save_game()
 	if key == "casino_key":
 		$"Manor/Right Door".switch_resource(load("res://Resources/casino_unlocked_enterable.tres"))
 		$"Manor/Right Door".switch_resource(load("res://Resources/casino_unlocked_inspectable.tres"))
@@ -182,6 +184,14 @@ func update_visibility_from_flags():
 	if StoryFlags.has_listened_to_walkie:
 		if $Manor_Prehist.has_node("Grug Happy"):
 			$"Manor_Prehist/Grug Happy".switch_resource(load("res://Resources/grugidentity.tres"))
+	if StoryFlags.saloon_unlocked:
+		if $Manor.has_node("Middle Door"):
+			$"Manor/Middle Door".switch_resource(load("res://Resources/saloon_unlocked_enterable.tres"))
+			$"Manor/Middle Door".switch_resource(load("res://Resources/saloon_unlocked_inspectable.tres"))
+			$"Manor/Middle Door".switch_resource(load("res://Resources/usable.tres"))
+		if $Manor_Prehist.has_node("Cave Key Takeable"):
+			$Manor_Prehist/"Cave Key Takeable".hide()
+
 func on_hide(node_path: String):
 	var node = get_node_or_null(node_path)
 	if node:

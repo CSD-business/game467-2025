@@ -5,3 +5,4 @@ extends Node
 @export var has_checked_safe = false
 @export var has_won_gambling = false
 @export var intro_played = true
+@export var saloon_unlocked := false

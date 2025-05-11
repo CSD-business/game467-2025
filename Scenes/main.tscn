@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://2ett7uv4wvv3" path="res://Assets/Images/silhouette-of-a-standing-male-figure-on-a-transparent-background-png.webp" id="32_e08e2"]
 [ext_resource type="Texture2D" uid="uid://c7mbaghk5tc8q" path="res://Assets/Images/deckofcards.png" id="33_r33sp"]
 [ext_resource type="Texture2D" uid="uid://tao7cajaceqa" path="res://Assets/Images/exitlight.png" id="34_hdf80"]
-[ext_resource type="Resource" path="res://Resources/cointakeable.tres" id="36_jwpg7"]
+[ext_resource type="Resource" uid="uid://bv7h8brolmydk" path="res://Resources/cointakeable.tres" id="36_jwpg7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hptm8"]
 bg_color = Color(0.105882, 0.105882, 0.105882, 0.615686)
@@ -802,6 +802,7 @@ usable_res = SubResource("Resource_b3802")
 enterable_res = SubResource("Resource_fevyy")
 
 [node name="Manor_Prehist" type="Node2D" parent="." groups=["Rooms"]]
+visible = false
 
 [node name="Manor_Prehisthub" type="Sprite2D" parent="Manor_Prehist"]
 z_index = -1
@@ -951,7 +952,6 @@ scale = Vector2(0.741423, 0.674021)
 texture = ExtResource("16_h1bgf")
 
 [node name="Manor_Saloon" type="Node2D" parent="." groups=["Rooms"]]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Manor_Saloon"]
 z_index = -2
