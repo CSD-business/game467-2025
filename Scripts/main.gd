@@ -14,7 +14,8 @@ func _ready():
 	
 	#$BlackBackground.show()
 	#SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
-	
+	SaveManager.apply_save_data()
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -102,11 +103,6 @@ func cause_change(key):
 		$"Manor_Casino/Dealer Standing".show()
 		$Manor_Casino/Dealer.hide()
 		$Manor_Casino/Curly.switch_resource(load("res://Resources/curlypostjukebox.tres"))
-		StoryFlags.record_used = true
-		if $Manor_Casino.has_node("Record"):
-			$Manor_Casino/Record.hide()
-		$Manor_Casino/Jukebox.switch_resource(load("res://Resources/usable.tres"))
-		SaveManager.save_game()
 	if key == "recordfail":
 		SignalBus.emit_signal("display_conversation", Cutscenes.recordfail, Cutscenes.recordfailspeaker)
 	if key == "coin":
@@ -123,7 +119,8 @@ func cause_change(key):
 		SignalBus.emit_signal("display_dialogue", "You and Curly both put your keys in, and a panel opens. Better get a closer look, this looks tough...")
 		$"Manor/Main Doors".switch_resource(load("res://Resources/main_door_haspanel.tres"))
 		$"Manor/Main Doors".switch_resource(load("res://Resources/usable.tres"))
-
+		
+		StoryFlags.main_key_used = true
 #Function for changing between all of the rooms in the game
 #Hardcoded because it's a small game haha
 func on_enter_room(destination):

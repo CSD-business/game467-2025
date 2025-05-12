@@ -10,4 +10,5 @@ extends Node
 @export var tall_used := false
 @export var casino_unlocked := false
 @export var coin_taken := false
+@export var main_key_used := false
 @export var record_used := false
