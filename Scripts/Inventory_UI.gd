@@ -11,12 +11,21 @@ func _process(delta):
 
 # Update inventory UI
 func update_inventory():
-	for slot in $GridContainer.get_children():
+	for i in range(grid_container.get_child_count()):
+		var slot = grid_container.get_child(i)
 		if slot.item == null:
 			slot.set_item(Global.added_item)
+
+			# Save the added item to Global.inventory_data with slot index
+			Global.inventory_data.append({
+				"key": Global.added_item.key,
+				"slot": i
+			})
+
 			Global.added_item = null
 			break
 	check_inventory()
+
 	
 #redundant?
 func _on_inventory_pressed():

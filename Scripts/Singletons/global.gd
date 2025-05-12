@@ -1,23 +1,28 @@
 extends Node
 
-# inventory items
+# Inventory system
 var inventory = []
-#Selected Object important to bus information of object to dialogue
-@export var Selected_Object : Node
-#added_item important to bus information to inventory
-@export var added_item : Takeable
-#Reading in Progess important to check if more dialogue can appear
-@export var reading_in_progress : bool
-#Array of the keys in your inventory, important to see if you can "use" stuff
-@export var inventory_keys : Array
-# Current Room key
-@export var current_room : String
-# Whether player is using an item or not dictates if some UI elements appear
-@export var using_item : bool
+@export var inventory_keys : Array = []
+var inventory_data : Array = [] # Stores { "key": key, "slot": slot_index }
 
+# Other gameplay variables
+@export var Selected_Object : Node
+@export var added_item : Takeable
+@export var reading_in_progress : bool
+@export var current_room : String
+@export var using_item : bool
 @export var in_menu : bool
 
-#codes for the procedural puzzle defined at ready but should be saved
+# Puzzle codes
 @export var year_code   : String
 @export var name_code   : String
 @export var symbol_code : String
+
+func find_first_empty_inventory_slot() -> int:
+	var inventory_ui = get_tree().get_root().get_node("Main/CanvasLayer/Inventory_UI")
+	var grid = inventory_ui.get_node("GridContainer")
+	for i in range(grid.get_child_count()):
+		var slot = grid.get_child(i)
+		if not slot.has_item(): # Assuming your slot script has a method like `has_item()`
+			return i
+	return -1 # No empty slots found

@@ -14,7 +14,7 @@ func _ready():
 	
 	#$BlackBackground.show()
 	#SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
-	SaveManager.apply_save_data()
+	
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

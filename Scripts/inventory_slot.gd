@@ -12,7 +12,8 @@ var key = null
 func set_item(new_item):
 	item = new_item
 	key = item.key
-	$Sprite2D.texture = item.texture
+	$Sprite2D.texture = item.texture  # <- correctly uses the visible Itemicon node
+	print("Item set in slot:", key)
 
 func remove_item():
 	key = null
