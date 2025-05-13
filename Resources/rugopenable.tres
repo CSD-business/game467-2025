@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inspectable" load_steps=2 format=3 uid="uid://sx6re3l2eiso"]
+
+[ext_resource type="Script" uid="uid://bjnyes25dp115" path="res://Scripts/inspectable.gd" id="1_85i4m"]
+
+[resource]
+script = ExtResource("1_85i4m")
+text = "This rug's suspicious. Why haven't I torn it up?"
+show_key = "rug"
+show = true
+metadata/_custom_type_script = "uid://bjnyes25dp115"

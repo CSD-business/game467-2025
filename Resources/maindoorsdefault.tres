@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inspectable" load_steps=2 format=3 uid="uid://ds2uuocm1gwpg"]
+
+[ext_resource type="Script" uid="uid://bjnyes25dp115" path="res://Scripts/inspectable.gd" id="1_q7o5q"]
+
+[resource]
+script = ExtResource("1_q7o5q")
+text = "These doors seem quite important compared to the others. There's two keyholes on it instead of one, and the door itself feels more intricately designed."
+show_key = ""
+show = true
+metadata/_custom_type_script = "uid://bjnyes25dp115"

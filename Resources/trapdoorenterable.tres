@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Enterable" load_steps=2 format=3 uid="uid://cshhdpynxg876"]
+
+[ext_resource type="Script" uid="uid://cluy2etoai2p2" path="res://Scripts/enterable.gd" id="1_pi41d"]
+
+[resource]
+script = ExtResource("1_pi41d")
+show = true
+destination = "powercore"
+metadata/_custom_type_script = "uid://cluy2etoai2p2"

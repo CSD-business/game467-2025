@@ -72,10 +72,14 @@ func _on_take_pressed():
 	$"../ObjectSound".set_stream(takeable_sound)
 	$"../ObjectSound".play()
 	selected_takeable.takeable_res.take_item()
-	SignalBus.emit_signal("display_dialogue", takeable_script)
+	if selected_takeable.takeable_res.key == "ladder":
+		SignalBus.emit_signal("display_conversation", Cutscenes.postladderchat, Cutscenes.postladderchatspeaker)
+	else:
+		SignalBus.emit_signal("display_dialogue", takeable_script)
 	selected_takeable.queue_free()
 	#selected.get_children().stream = usable_script.use_sound
 	#selected.get_child("Sound").play
+	
 	
 	self.hide()
 func _on_talk_pressed():

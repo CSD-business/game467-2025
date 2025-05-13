@@ -225,10 +225,112 @@ extends Node
 	"Curly"
 ]
 
+@export var unlockfinalkeypad = [
+	"I got it!",
+	"Wow you actually did, let's see what's on the other side.",
+	"Oh what, that's it! It's just a broom closet with some cleaning supplies with a ladder! What are we supposed to do with this?!",
+	"(A ladder huh? There's got to be some reason this was hidden here this whole time. Maybe there are some places I haven't checked in this room.)"
+]
+@export var unlockfinalkeypadspeaker = [
+	"Logan",
+	"Curly",
+	"Curly",
+	"Logan"
+]
+@export var postladderchat = [
+	"Ahh, a step-ladder! We should bring this with us, it could prove handy!",
+	"I don’t know what we are going to do with a ladder with nothing to reach for, but sure.",
+	"Also, that’s just a normal ladder. There is a difference, you know.",
+	"Is there one? You’re so narrow-minded, Logan.",
+	"Look at the bigger picture here! We're trapped in here and need anything we can get!",
+	"Whatever, let’s just take the ladder and bring it outside. If you think we need it, then let’s take it.",
+	"(I can’t argue with Curly if he has an idea with this ladder. I wonder if there really IS something we can use this with…)"
+]
+@export var postladderchatspeaker = [
+	"Curly",
+	"Logan",
+	"Logan",
+	"Curly",
+	"Curly",
+	"Logan",
+	"Logan"
+]
+@export var endcutscenepart1 = [
+	"What room are we in now?",
+	"Don't know, though without that ladder there would be no way of getting down here without breaking some bones."
+]
+@export var endcutscenepart1speaker = [
+	"Logan",
+	"Curly"
+]
+@export var endcutscenepart2 = [
+	"Ah, it seems I have guests.",
+	"Huh?! Who is there? Who are you?",
+	"My name is M.E.C.H. I am a Multigenerational Engineered Chronic Hellhole.",
+	"That probably explains using M.E.C.H. for short.",
+	"So what even are you? Just some supercomputer deep within the mansion?",
+	"I am more than that. I am the mansion and all that you have seen.",
+	"What do you mean all that we've seen? Have you been watching us?",
+	"Precisely, I apologize for the inconvenience but all I have done is taken notice of how you interact with the world and its growth over time.",
+	"I am serving as the Powercore to this mansion and have generated many of the places you have seen here.",
+	"So, what really is your goal, is someone telling you to do this. What do you really want?",
+	"You see when I was built, I served to understand all of time and how our world came to be.",
+	"I was given all the knowledge in the world to fully understand everything; however I lacked one important form of information.",
+	"That was physical interpretation.",
+	"The only way to obtain that was to replicate it here with the many participants who entered the room to serve in my grasp for knowledge.",
+	"But all you're doing is taking control of innocent people while keeping them captive! This isn't for knowledge- It's just messed up!",
+	"But aren't those people happy here? They are now settling with their new lives and the many more that I could replicate for them.",
+	"With my knowledge and abilities, I can replicate the world based on my data to create worlds where we can truly understand how the world truly was in the past!",
+	"What you are forgetting is that you are taking away the present day!",
+	"The people who have been here for so long can't look towards the future, and the here and now that you have stolen must be taken back!",
+	"Way ahead of you kid! I've been stuck here for too long!",
+	"(Curly begins to unplug an cut some wires)",
+	"Error! Needs power to stay active. Requesting back up power.",
+	"Oh no you don't!",
+	"(Curly starts smashing the keyboard with all the might he has!)",
+	"Does not compute.",
+	"System...brr..error...system...shutting...down....",
+	"That should do it! You think everything will go back to normal like it does in movies?",
+	"Who knows, but I will say that it will make a great story."
+
+]	
+@export var endcutscenepart2speaker = [
+	"???",
+	"Logan",
+	"Mech",
+	"Curly",
+	"Logan",
+	"Mech",
+	"Logan",
+	"Mech",
+	"Mech",
+	"Logan",
+	"Mech",
+	"Mech",
+	"Mech",
+	"Mech",
+	"Logan",
+	"Mech",
+	"Mech",
+	"Logan",
+	"Logan",
+	"Curly",
+	"",
+	"Mech",
+	"Curly",
+	"",
+	"Mech",
+	"Mech",
+	"Curly",
+	"Logan"
+]
+
+@export var endcutscenepart2key = "endcutscenepart2key"
 @export var jukeboxkey = "jukeboxkey"
 @export var jukeboxkey2 = "jukeboxkey2"
 @export var unlock_safe_key = "unlocksafekey"
 @export var markgivekeykey = "markgivekeykey"
+@export var unlockfinalkeypadkey = "unlockfinalkeypadkey"
 @export var nothing = "Nothing happens."
 @export var give_dog_bone = "The dog yips happily! Perhaps I can take the bone now..."
 @export var unlock_saloon_door = "The door unlocks. Nice."

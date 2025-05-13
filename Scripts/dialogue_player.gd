@@ -104,8 +104,8 @@ func print_dialogue(message,speaker,key):
 	Global.reading_in_progress = false
 	if key == "introcutscene":
 		print("intro over")
-		$"../BlackBackground".hide()
-		get_tree().change_scene_to_file("res://Scenes/main.tscn")
+		$"../BlackBackground".modulate = Color(1,1,1,0)
+		#get_tree().change_scene_to_file("res://Scenes/main.tscn")
 		#AudioPlayer.get_node("DefaultMusic").play()
 		AudioPlayer.fade_in_music(AudioPlayer.get_node("DefaultMusic"))
 	if key == "markgivekeykey":
@@ -123,6 +123,16 @@ func print_dialogue(message,speaker,key):
 		load("res://Resources/recordleftover.tres").take_item()
 	if key == "curlythankyou":
 		load("res://Resources/main_door_key.tres").take_item()
+	if key == "endcutscenepart1key":
+		SignalBus.emit_signal("display_conversation", Cutscenes.endcutscenepart2, Cutscenes.endcutscenepart2speaker, "endcutscenepart2key")
+		$"../Manor_Powercore/PowerOff".hide()
+		$"../Manor_Powercore/PowerOn".show()
+	if key == "endcutscenepart2key":
+		Global.in_menu = true
+		$"../BlackBackground/AnimationPlayer".play("Fade2Black") 
+		await get_tree().create_timer(2).timeout
+		print("thank you!!!")
+		$"../ThankYou/AnimationPlayer".play("Fade2Black") 
 func _on_mouse_entered():
 	Global.Selected_Object = self
 

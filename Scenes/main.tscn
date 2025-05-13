@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://b4vadqqj38k7g"]
+[gd_scene load_steps=135 format=3 uid="uid://b4vadqqj38k7g"]
 
 [ext_resource type="Script" uid="uid://b3ek1jmcjy0j6" path="res://Scripts/main.gd" id="1_5wbwr"]
 [ext_resource type="PackedScene" uid="uid://ddnyj3yf6gsgm" path="res://Scenes/empty_clickable.tscn" id="1_8oicw"]
@@ -14,12 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://b4e461qi0ldfe" path="res://Scenes/inventory_ui.tscn" id="10_hptm8"]
 [ext_resource type="Texture2D" uid="uid://k0tsknmxk3yq" path="res://Assets/Images/manor_prehistoric.png" id="11_fdnlq"]
 [ext_resource type="Script" uid="uid://cluy2etoai2p2" path="res://Scripts/enterable.gd" id="11_jkdf5"]
+[ext_resource type="Resource" uid="uid://ds2uuocm1gwpg" path="res://Resources/maindoorsdefault.tres" id="12_aa8k8"]
 [ext_resource type="Texture2D" uid="uid://bg4k64qid20s4" path="res://Assets/Images/walkie.png" id="15_h1bgf"]
 [ext_resource type="PackedScene" uid="uid://cg62f4xu4ampk" path="res://Scenes/final_keypad.tscn" id="15_k2e45"]
+[ext_resource type="Texture2D" uid="uid://4wr0or2ll6v6" path="res://Assets/Images/ladder.png" id="15_o1aky"]
+[ext_resource type="Texture2D" uid="uid://b2wp0xyahw68m" path="res://Assets/Images/laddersmall.png" id="16_aa8k8"]
+[ext_resource type="Texture2D" uid="uid://6lfc41i4kd40" path="res://Assets/Images/rugcover.png" id="16_aqgau"]
 [ext_resource type="Texture2D" uid="uid://dyrn4kry4y3ou" path="res://Assets/Images/bucket.png" id="16_b3802"]
 [ext_resource type="Texture2D" uid="uid://juxdv0n06ve3" path="res://Assets/Images/bone.png" id="16_h1bgf"]
 [ext_resource type="AudioStream" uid="uid://c7we5t1quw8el" path="res://Assets/Audio/SFX/Paper.wav" id="16_u50mg"]
+[ext_resource type="Texture2D" uid="uid://cpvrtxe1mx5rh" path="res://Assets/Images/trapdoor.png" id="17_8cuat"]
 [ext_resource type="AudioStream" uid="uid://ieeoh1m6yyw5" path="res://Assets/Audio/SFX/Walkie.wav" id="17_cbgmd"]
+[ext_resource type="Texture2D" uid="uid://b57sspyw31xna" path="res://Assets/Images/dooroverlay.png" id="17_kwxat"]
 [ext_resource type="Texture2D" uid="uid://ck80r08fn8d3j" path="res://Assets/Images/key.png" id="18_b3802"]
 [ext_resource type="AudioStream" uid="uid://dk72unnfr578e" path="res://Assets/Audio/Door_Opening.wav" id="18_fevyy"]
 [ext_resource type="AudioStream" uid="uid://dw5n862ae0fra" path="res://Assets/Audio/SFX/Bone.wav" id="19_cbgmd"]
@@ -34,10 +40,12 @@
 [ext_resource type="Texture2D" uid="uid://bsto5q1yk2mw3" path="res://Assets/Images/manorcasino.png" id="29_7k868"]
 [ext_resource type="Resource" uid="uid://u0d4xstg13fc" path="res://Resources/curlyfirstencounter.tres" id="30_e08e2"]
 [ext_resource type="Texture2D" uid="uid://dqynscd7qbjfs" path="res://Assets/Images/dealerissolated.png" id="30_kltya"]
-[ext_resource type="Texture2D" uid="uid://2ett7uv4wvv3" path="res://Assets/Images/silhouette-of-a-standing-male-figure-on-a-transparent-background-png.webp" id="32_e08e2"]
 [ext_resource type="Texture2D" uid="uid://c7mbaghk5tc8q" path="res://Assets/Images/deckofcards.png" id="33_r33sp"]
 [ext_resource type="Texture2D" uid="uid://tao7cajaceqa" path="res://Assets/Images/exitlight.png" id="34_hdf80"]
 [ext_resource type="Resource" uid="uid://bv7h8brolmydk" path="res://Resources/cointakeable.tres" id="36_jwpg7"]
+[ext_resource type="Texture2D" uid="uid://8lnts28hj2sy" path="res://Assets/Images/leanlingguy.png" id="40_nwwfm"]
+[ext_resource type="Texture2D" uid="uid://62wuy2bd36py" path="res://Assets/Images/manorfuture-LightsOff.png" id="44_kqrg6"]
+[ext_resource type="Texture2D" uid="uid://bftxfkyg4c5ke" path="res://Assets/Images/manorfuture-LightsOn.png" id="45_nwwfm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hptm8"]
 bg_color = Color(0.105882, 0.105882, 0.105882, 0.615686)
@@ -97,13 +105,6 @@ show = false
 destination = "casino"
 enter_sound = ExtResource("18_fevyy")
 metadata/_custom_type_script = "uid://cluy2etoai2p2"
-
-[sub_resource type="Resource" id="Resource_owhal"]
-script = ExtResource("4_6iyac")
-text = "These doors seem quite important compared to the others. There's two keyholes on it instead of one, and the door itself feels more intricately designed."
-show_key = ""
-show = true
-metadata/_custom_type_script = "uid://bjnyes25dp115"
 
 [sub_resource type="Resource" id="Resource_k8rh3"]
 script = ExtResource("9_6iyac")
@@ -183,6 +184,22 @@ show_key = ""
 show = true
 metadata/_custom_type_script = "uid://bjnyes25dp115"
 
+[sub_resource type="Resource" id="Resource_owhal"]
+script = ExtResource("4_6iyac")
+text = "It's a ladder... Or a stepladder?"
+show_key = ""
+show = true
+metadata/_custom_type_script = "uid://bjnyes25dp115"
+
+[sub_resource type="Resource" id="Resource_55idt"]
+script = ExtResource("4_fb3mb")
+show = true
+pick_up_text = ""
+inspect_text = "Where would I even need to use this? The only height in this whole building is in this room."
+texture = ExtResource("16_aa8k8")
+key = "ladder"
+metadata/_custom_type_script = "uid://b2m6w2fqm504y"
+
 [sub_resource type="Gradient" id="Gradient_pdsj5"]
 colors = PackedColorArray(0, 0, 0, 0.784314, 0.577008, 0.577008, 0.577008, 0.784314)
 
@@ -190,6 +207,20 @@ colors = PackedColorArray(0, 0, 0, 0.784314, 0.577008, 0.577008, 0.577008, 0.784
 gradient = SubResource("Gradient_pdsj5")
 width = 649
 height = 864
+
+[sub_resource type="Resource" id="Resource_87bhu"]
+script = ExtResource("4_6iyac")
+text = "I can't believe this trapdoor was here the whole time!"
+show_key = ""
+show = true
+metadata/_custom_type_script = "uid://bjnyes25dp115"
+
+[sub_resource type="Resource" id="Resource_33qc4"]
+script = ExtResource("9_6iyac")
+text = "debug"
+show = true
+key = "ladder"
+metadata/_custom_type_script = "uid://w0q7anfur22h"
 
 [sub_resource type="Resource" id="Resource_gt3je"]
 script = ExtResource("4_6iyac")
@@ -876,7 +907,7 @@ enterable_res = SubResource("Resource_ovafv")
 [node name="Main Doors" parent="Manor" instance=ExtResource("1_8oicw")]
 position = Vector2(433, 323)
 scale = Vector2(2.66515, 1.77381)
-inspectable_res = SubResource("Resource_owhal")
+inspectable_res = ExtResource("12_aa8k8")
 usable_res = SubResource("Resource_k8rh3")
 enterable_res = SubResource("Resource_uv6w5")
 
@@ -925,6 +956,17 @@ talkable_res = SubResource("Resource_h1bgf")
 usable_res = SubResource("Resource_b3802")
 enterable_res = SubResource("Resource_fevyy")
 
+[node name="Ladder" parent="Manor" instance=ExtResource("1_8oicw")]
+visible = false
+position = Vector2(478, 346)
+inspectable_res = SubResource("Resource_owhal")
+takeable_res = SubResource("Resource_55idt")
+
+[node name="Ladder" type="Sprite2D" parent="Manor/Ladder"]
+position = Vector2(0, 1)
+scale = Vector2(0.4224, 0.2752)
+texture = ExtResource("15_o1aky")
+
 [node name="FinalKeypad" parent="Manor" instance=ExtResource("15_k2e45")]
 visible = false
 offset_left = 426.0
@@ -938,6 +980,32 @@ position = Vector2(6.11717, 15.1983)
 rotation = -1.5708
 scale = Vector2(1.00045, 1.0011)
 texture = SubResource("GradientTexture2D_ee4r6")
+
+[node name="OpenDoor" type="Sprite2D" parent="Manor"]
+visible = false
+z_index = -1
+position = Vector2(431, 321)
+scale = Vector2(0.54, 0.54)
+texture = ExtResource("17_kwxat")
+
+[node name="Trapdoor" parent="Manor" instance=ExtResource("1_8oicw")]
+visible = false
+position = Vector2(426, 511)
+scale = Vector2(2.2, 2)
+inspectable_res = SubResource("Resource_87bhu")
+usable_res = SubResource("Resource_33qc4")
+
+[node name="Rugcover" type="Sprite2D" parent="Manor/Trapdoor"]
+z_index = -1
+position = Vector2(2.72728, 21.5)
+scale = Vector2(0.272727, 0.3)
+texture = ExtResource("16_aqgau")
+
+[node name="TrapdoorImg" type="Sprite2D" parent="Manor/Trapdoor"]
+z_index = -1
+position = Vector2(0.909088, 10.5)
+scale = Vector2(0.272727, 0.3)
+texture = ExtResource("17_8cuat")
 
 [node name="Manor_Prehist" type="Node2D" parent="." groups=["Rooms"]]
 visible = false
@@ -1039,7 +1107,7 @@ enterable_res = SubResource("Resource_fevyy")
 [node name="Sprite2D" type="Sprite2D" parent="Manor_Prehist/Cave Key Default"]
 position = Vector2(-1.07288e-05, 5.48363e-06)
 scale = Vector2(70, 63.657)
-texture = ExtResource("18_b3802")
+texture = ExtResource("26_ueoa1")
 
 [node name="Cave Key Takeable" parent="Manor_Prehist" instance=ExtResource("1_8oicw")]
 visible = false
@@ -1054,7 +1122,7 @@ enterable_res = SubResource("Resource_fevyy")
 [node name="Sprite2D" type="Sprite2D" parent="Manor_Prehist/Cave Key Takeable"]
 position = Vector2(-1.07288e-05, -5.34058e-05)
 scale = Vector2(1.53422, 1.39475)
-texture = ExtResource("18_b3802")
+texture = ExtResource("26_ueoa1")
 
 [node name="Grug Default" parent="Manor_Prehist" instance=ExtResource("1_8oicw")]
 position = Vector2(771, 406)
@@ -1248,8 +1316,7 @@ texture = ExtResource("30_kltya")
 [node name="Dealer Standing" type="Sprite2D" parent="Manor_Casino"]
 visible = false
 position = Vector2(712, -62)
-scale = Vector2(1.5675, 1.5675)
-texture = ExtResource("32_e08e2")
+texture = ExtResource("40_nwwfm")
 
 [node name="Jukebox" parent="Manor_Casino" instance=ExtResource("1_8oicw")]
 position = Vector2(792, -66)
@@ -1284,6 +1351,23 @@ scale = Vector2(1.50344, 2.27215)
 inspectable_res = SubResource("Resource_ihvwq")
 takeable_res = ExtResource("36_jwpg7")
 
+[node name="Manor_Powercore" type="Node2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(400, 300)
+scale = Vector2(0.5, 0.5)
+
+[node name="PowerOff" type="Sprite2D" parent="Manor_Powercore"]
+position = Vector2(64, 48)
+scale = Vector2(1.08, 1.08)
+texture = ExtResource("44_kqrg6")
+
+[node name="PowerOn" type="Sprite2D" parent="Manor_Powercore"]
+visible = false
+position = Vector2(64, 48)
+scale = Vector2(1.08, 1.08)
+texture = ExtResource("45_nwwfm")
+
 [node name="TextBox" type="CanvasLayer" parent="."]
 
 [node name="BlackBackground" type="Sprite2D" parent="."]
@@ -1300,6 +1384,24 @@ libraries = {
 
 [node name="ObjectSound" type="AudioStreamPlayer" parent="."]
 
+[node name="ThankYou" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 308.0
+offset_top = 196.0
+offset_right = 836.0
+offset_bottom = 279.0
+theme = ExtResource("10_d1ilt")
+text = "THE END
+
+Thank you for playing!
+- The Kronos Team -"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ThankYou"]
+libraries = {
+&"": SubResource("AnimationLibrary_8cuat")
+}
+
 [connection signal="pressed" from="ClickableOptions/Inspect" to="ClickableOptions" method="_on_inspect_pressed"]
 [connection signal="pressed" from="ClickableOptions/Take" to="ClickableOptions" method="_on_take_pressed"]
 [connection signal="pressed" from="ClickableOptions/Talk" to="ClickableOptions" method="_on_talk_pressed"]
@@ -1309,3 +1411,4 @@ libraries = {
 [connection signal="focus_entered" from="DialoguePlayer" to="DialoguePlayer" method="_on_focus_entered"]
 [connection signal="mouse_entered" from="DialoguePlayer" to="DialoguePlayer" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="DialoguePlayer" to="DialoguePlayer" method="_on_mouse_exited"]
+[connection signal="on_pad_solve" from="Manor/FinalKeypad" to="." method="_on_final_keypad_on_pad_solve"]

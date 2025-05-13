@@ -12,6 +12,7 @@ func _process(delta):
 
 func fade_transition():
 	show()
+	Global.in_menu = true
 	$AnimationPlayer.play("Fade2Black")
 	#for i in range(100):
 		#print(i)
@@ -23,4 +24,5 @@ func fade_transition():
 		#modulate.a = 1-(i/100)
 		#await get_tree().create_timer(transition_time/100).timeout
 	$AnimationPlayer.play("Fade2Clear")
+	Global.in_menu = false
 	hide()
