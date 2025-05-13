@@ -6,10 +6,15 @@ var save_path := "user://save_data.save"
 var key_to_filename = {
 	"bone": "bone.png",
 	"walkie": "walkie.png",
+	"saloon_key": "key.png",
 	"markbad": "bottleslice.png",
 	"record": "record.png",
 	"markgood": "bottle.png",
-	"saloon_key": "key.png",
+	"casino_key": "key.png",
+	"cards": "deckofcards.png",
+	"coin": "coin.png",
+	"main_key": "key.png",
+	"skibidi rizz": "record.png",
 }
 
 
@@ -110,6 +115,9 @@ func apply_save_data():
 			if item_key == "bone":
 				print("Hiding bone from world")
 				SignalBus.emit_signal("hide", "Manor_Prehist/Bone")
+			elif item_key == "saloon_key":
+				print("Hiding saloon key from world")
+				SignalBus.emit_signal("hide", "Manor_Prehist/Cave Key Takeable")
 			elif item_key == "walkie":
 				print("Hiding walkie from world")
 				SignalBus.emit_signal("hide", "Manor_Prehist/Walkie")
@@ -118,20 +126,28 @@ func apply_save_data():
 				SignalBus.emit_signal("hide", "Manor_Saloon/Stout Bottle")
 			elif item_key == "record":
 				print("Hiding record from world")
-			elif item_key == "tall_bottle":
+			elif item_key == "markgood":
 				print("Hiding Tall bottle from world")
 				SignalBus.emit_signal("hide", "Manor_Saloon/Tall Bottle")
-			elif item_key == "saloon_key":
-				print("Hiding saloon key from world")
-				SignalBus.emit_signal("hide", "Manor_Prehist/Cave Key Takeable")
+			elif item_key == "cards":
+				print("Hiding Deck of Cards from world")
+				SignalBus.emit_signal("hide", "Manor_Casino/Deck of Cards")
+			elif item_key == "coin":
+				print("Hiding Deck of Cards from world")
+				SignalBus.emit_signal("hide", "Manor_Casino/Coin")
+			elif item_key == "casino_key":
+				print("Hiding casino from world")
+				SignalBus.emit_signal("hide", "Manor_Saloon/Saloon Key")
+			elif item_key == "main_key":
+				print("Hiding casino from world")
+			elif item_key == "skibidi rizz":
+				print("Hiding casino from world")
+				
 			
 	# Extra visibility logic
 	if StoryFlags.bone_used:
 		SignalBus.emit_signal("hide", "Manor_Prehist/Bone")
 
-	# ✅ NEW RULE: Bone used AND Cave Key in inventory → hide world cave key
-
-	SignalBus.emit_signal("hide", "BlackBackground")
 
 	# Ensure visibility is updated after scene loads
 	get_tree().current_scene.call_deferred("update_visibility_from_flags")

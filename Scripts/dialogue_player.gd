@@ -105,7 +105,7 @@ func print_dialogue(message,speaker,key):
 	if key == "introcutscene":
 		print("intro over")
 		$"../BlackBackground".hide()
-		$"../Manor".show()
+		get_tree().change_scene_to_file("res://Scenes/main.tscn")
 		#AudioPlayer.get_node("DefaultMusic").play()
 		AudioPlayer.fade_in_music(AudioPlayer.get_node("DefaultMusic"))
 	if key == "markgivekeykey":

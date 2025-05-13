@@ -599,11 +599,11 @@ show_key = ""
 show = true
 metadata/_custom_type_script = "uid://bjnyes25dp115"
 
-[sub_resource type="Gradient" id="Gradient_k12tt"]
+[sub_resource type="Gradient" id="Gradient_k2e45"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_h1bgf"]
-gradient = SubResource("Gradient_k12tt")
+gradient = SubResource("Gradient_k2e45")
 
 [sub_resource type="Animation" id="Animation_k2e45"]
 resource_name = "Fade2Black"
@@ -845,7 +845,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_hptm8")
 wait_time = 0.1
 
 [node name="Manor" type="Node2D" parent="." groups=["Rooms"]]
-visible = false
 
 [node name="Manorhub" type="Sprite2D" parent="Manor"]
 z_index = -1
@@ -941,6 +940,7 @@ scale = Vector2(1.00045, 1.0011)
 texture = SubResource("GradientTexture2D_ee4r6")
 
 [node name="Manor_Prehist" type="Node2D" parent="." groups=["Rooms"]]
+visible = false
 
 [node name="Manor_Prehisthub" type="Sprite2D" parent="Manor_Prehist"]
 z_index = -1

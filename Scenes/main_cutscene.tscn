@@ -1,0 +1,226 @@
+[gd_scene load_steps=13 format=3 uid="uid://bcf188wbdg54v"]
+
+[ext_resource type="Script" uid="uid://obymwgufc2rv" path="res://Scripts/cutscene.gd" id="1_0txhb"]
+[ext_resource type="Script" uid="uid://djb1c6fnq0or1" path="res://Scripts/black_background.gd" id="2_tgawi"]
+[ext_resource type="Script" uid="uid://8arcsgcdja5w" path="res://Scripts/dialogue_player.gd" id="3_s4mna"]
+[ext_resource type="Theme" uid="uid://c7h5nluxkqdya" path="res://UIThemes/DefaultFont.tres" id="4_cik3g"]
+
+[sub_resource type="Gradient" id="Gradient_k12tt"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mvqs4"]
+gradient = SubResource("Gradient_k12tt")
+
+[sub_resource type="Animation" id="Animation_k2e45"]
+resource_name = "Fade2Black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_aqgau"]
+resource_name = "Fade2Clear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_8cuat"]
+resource_name = "FadeComplete"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_536cc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8cuat"]
+_data = {
+&"Fade2Black": SubResource("Animation_k2e45"),
+&"Fade2Clear": SubResource("Animation_aqgau"),
+&"FadeComplete": SubResource("Animation_8cuat"),
+&"RESET": SubResource("Animation_536cc")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3jh1"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 0.615686)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0txhb")
+
+[node name="BlackBackground" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(517.5, 326.75)
+scale = Vector2(5.04297, 654.5)
+texture = SubResource("GradientTexture1D_mvqs4")
+script = ExtResource("2_tgawi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BlackBackground"]
+libraries = {
+&"": SubResource("AnimationLibrary_8cuat")
+}
+
+[node name="DialoguePlayer" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 518.0
+offset_right = 860.0
+offset_bottom = 644.0
+mouse_filter = 2
+script = ExtResource("3_s4mna")
+
+[node name="TextLabel" type="RichTextLabel" parent="DialoguePlayer"]
+z_index = 1
+texture_filter = 1
+layout_mode = 1
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 1144.0
+offset_bottom = 167.0
+scale = Vector2(0.75, 0.75)
+mouse_filter = 2
+theme = ExtResource("4_cik3g")
+text = "This painting has been torn, perhaps on purpose. The figure is impossible to make put, perhaps a previous owner of the mansion..? "
+visible_characters_behavior = 1
+
+[node name="Speaker" type="RichTextLabel" parent="DialoguePlayer"]
+z_index = 1
+texture_filter = 1
+layout_mode = 1
+offset_left = 4.0
+offset_top = -41.0
+offset_right = 395.0
+offset_bottom = 4.0
+mouse_filter = 2
+theme = ExtResource("4_cik3g")
+
+[node name="Background" type="Panel" parent="DialoguePlayer"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k3jh1")
+
+[node name="SpeakerLabel" type="RichTextLabel" parent="DialoguePlayer"]
+z_index = 1
+texture_filter = 1
+layout_mode = 1
+offset_left = 4.0
+offset_top = -44.0
+offset_right = 232.0
+offset_bottom = -3.0
+mouse_filter = 2
+theme = ExtResource("4_cik3g")
+
+[node name="SpeakerBackground" type="Panel" parent="DialoguePlayer"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -47.0
+offset_right = -433.0
+offset_bottom = -126.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k3jh1")
+
+[node name="TextTimer" type="Timer" parent="DialoguePlayer"]
+wait_time = 0.1
+
+[connection signal="focus_entered" from="DialoguePlayer" to="DialoguePlayer" method="_on_focus_entered"]
+[connection signal="mouse_entered" from="DialoguePlayer" to="DialoguePlayer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="DialoguePlayer" to="DialoguePlayer" method="_on_mouse_exited"]
