@@ -21,12 +21,14 @@ func _ready():
 func _process(_delta):
 	#This is to trigger cutscenes/change item resoureces
 	check_story_flags()
+
 	
 func _input(event):
 	if event.is_action_pressed("save_game"):
 		SaveManager.save_game()
 	elif event.is_action_pressed("load_game"):
 		SaveManager.apply_save_data()
+
 
 #Triggers when "Use" is selected from Clickable Options
 #It turns off some click functionality so the game doesn't get confused
@@ -52,18 +54,22 @@ func on_usability_trigger(key):
 func cause_change(key):
 	if key == "left_door_key":
 		pass
+	
 	if key == "saloon_key":
 		$"Manor/Middle Door".switch_resource(load("res://Resources/saloon_unlocked_enterable.tres"))
 		$"Manor/Middle Door".switch_resource(load("res://Resources/saloon_unlocked_inspectable.tres"))
 		$"Manor/Middle Door".switch_resource(load("res://Resources/usable.tres"))
 		SignalBus.emit_signal("display_dialogue", Cutscenes.unlock_saloon_door)
-		StoryFlags.saloon_unlocked = true
+		StoryFlags.saloon_unlocked = true 
+		Global.inventory_keys.erase("saloon_key")  
+		SignalBus.emit_signal("hide", "Manor_Prehist/Cave Key Takeable")
 		SaveManager.save_game()
 	if key == "casino_key":
 		$"Manor/Right Door".switch_resource(load("res://Resources/casino_unlocked_enterable.tres"))
 		$"Manor/Right Door".switch_resource(load("res://Resources/casino_unlocked_inspectable.tres"))
 		$"Manor/Right Door".switch_resource(load("res://Resources/usable.tres"))
-		SignalBus.emit_signal("display_dialogue", Cutscenes.unlock_casino_door)	
+		SignalBus.emit_signal("display_dialogue", Cutscenes.unlock_casino_door)
+		Global.inventory_keys.erase("saloon_key")	
 		StoryFlags.casino_unlocked = true
 		if $Manor_Saloon.has_node("Saloon Key"):
 			$Manor_Saloon/"Saloon Key".hide()
@@ -73,12 +79,17 @@ func cause_change(key):
 		SignalBus.emit_signal("display_dialogue", Cutscenes.give_dog_bone)
 		$"Manor_Prehist/Cave Key Default".hide()
 		$"Manor_Prehist/Grug Default".hide()
-		$"Manor_Prehist/Cave Key Takeable".show()
+
+	# ✅ Only show the takeable key if it hasn't been taken yet
+		if not Global.inventory_keys.has("saloon_key"):
+			$"Manor_Prehist/Cave Key Takeable".show()
+
 		$"Manor_Prehist/Grug Happy".show()
 		$Manor_Prehist/Dog.hide()
 		$Manor_Prehist/DogNoUse.show()
+
 		StoryFlags.bone_used = true
-		SaveManager.save_game()  # Save after flag change
+		SaveManager.save_game()
 		
 	if key == "markbad":
 		$Manor/Alcohol.switch_resource(load("res://Resources/alcoholbad.tres"))
@@ -202,15 +213,17 @@ func update_visibility_from_flags():
 			$Manor_Prehist/"Cave Key Default".hide()
 		if $Manor_Prehist.has_node("Grug Default"):
 			$Manor_Prehist/"Grug Default".hide()
-		if $Manor_Prehist.has_node("Cave Key Takeable"):
+		if $Manor_Prehist.has_node("Cave Key Takeable") and not Global.inventory_keys.has("saloon_key"):
 			$Manor_Prehist/"Cave Key Takeable".show()
+
 		if $Manor_Prehist.has_node("Grug Happy"):
 			$Manor_Prehist/"Grug Happy".show()
 
 	if StoryFlags.has_checked_safe:
 		if $Manor_Saloon.has_node("Mark"):
 			$Manor_Saloon/Mark.switch_resource(load("res://Resources/markhascheckedsafe.tres"))
-
+		if $Manor_Saloon.has_node("Safe"):
+			$Manor_Saloon/"Safe".hide()
 	if StoryFlags.has_listened_to_walkie:
 		if $Manor_Prehist.has_node("Grug Happy"):
 			$"Manor_Prehist/Grug Happy".switch_resource(load("res://Resources/grugidentity.tres"))
@@ -238,6 +251,13 @@ func update_visibility_from_flags():
 		if $Manor_Casino.has_node("Record"):
 			$Manor_Casino/Record.hide()
 
+# Show Bone if not in inventory and not used
+	if not StoryFlags.bone_used and not Global.inventory_keys.has("bone"):
+		if $Manor_Prehist.has_node("Bone"):
+			$Manor_Prehist/Bone.show()
+	else:
+		if $Manor_Prehist.has_node("Bone"):
+			$Manor_Prehist/Bone.hide()
 
 
 func on_hide(node_path: String):

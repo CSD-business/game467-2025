@@ -845,6 +845,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_hptm8")
 wait_time = 0.1
 
 [node name="Manor" type="Node2D" parent="." groups=["Rooms"]]
+visible = false
 
 [node name="Manorhub" type="Sprite2D" parent="Manor"]
 z_index = -1
@@ -1090,7 +1091,6 @@ scale = Vector2(0.741423, 0.674021)
 texture = ExtResource("16_h1bgf")
 
 [node name="Manor_Saloon" type="Node2D" parent="." groups=["Rooms"]]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Manor_Saloon"]
 z_index = -2

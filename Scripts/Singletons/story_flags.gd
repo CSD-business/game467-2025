@@ -12,3 +12,4 @@ extends Node
 @export var coin_taken := false
 @export var main_key_used := false
 @export var record_used := false
+@export var saloon_key_used := false
