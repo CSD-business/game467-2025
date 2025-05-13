@@ -2,6 +2,17 @@ extends Node
 
 var save_path := "user://save_data.save"
 
+# Texture filename mapping
+var key_to_filename = {
+	"bone": "bone.png",
+	"walkie": "walkie.png",
+	"markbad": "bottleslice.png",
+	"record": "record.png",
+	"markgood": "bottle.png",
+	"saloon_key": "key.png",
+}
+
+
 func save_game():
 	var save_data = {
 		"current_room": Global.current_room,
@@ -17,7 +28,7 @@ func save_game():
 		"inventory_data": Global.inventory_data,
 		"year_code": Global.year_code,
 		"name_code": Global.name_code,
-		"symbol_code": Global.symbol_code
+		"symbol_code": Global.symbol_code,
 	}
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var(save_data)
@@ -65,38 +76,62 @@ func apply_save_data():
 
 	var inventory_ui = get_tree().get_root().get_node("Main/Inventory_UI")
 	var grid = inventory_ui.get_node("GridContainer")
-
 	for data in Global.inventory_data:
 		var item_key = data.get("key", "")
 		var slot_index = data.get("slot", -1)
 
+		# Skip restoring Bone if it was already used
+		if item_key == "bone" and StoryFlags.bone_used:
+			print("Skipping bone - already used")
+			continue
+
+		# Skip restoring Cave Key if it was already used
+		if item_key == "cave_key" and StoryFlags.cave_key_used:
+			print("Skipping cave key - already used")
+			continue
+
 		print("Restoring item:", item_key, "to slot", slot_index)
-
-
 		if item_key != "" and slot_index >= 0 and slot_index < grid.get_child_count():
 			var slot = grid.get_child(slot_index)
-
 			var item_instance = Takeable.new()
 			item_instance.key = item_key
 			item_instance.inspect_text = "Restored item: " + item_key
-			item_instance.texture = load("res://Assets/Images/" + item_key + ".png")
- # Adjust path if needed
+
+			var filename = key_to_filename.get(item_key, item_key + ".png")
+			var texture_path = "res://Assets/Images/" + filename
+			if not ResourceLoader.exists(texture_path):
+				print("⚠️ Warning: Missing texture for item_key:", item_key, "→", texture_path)
+			item_instance.texture = load(texture_path)
 
 			slot.set_item(item_instance)
 			Global.inventory_keys.append(item_key)
 
-			# Hide from world if in inventory
+			# Hide Bone or Cave Key in world if in inventory
 			if item_key == "bone":
 				print("Hiding bone from world")
 				SignalBus.emit_signal("hide", "Manor_Prehist/Bone")
-		else:
-			print("Skipping item with bad data:", data)
-
+			elif item_key == "walkie":
+				print("Hiding walkie from world")
+				SignalBus.emit_signal("hide", "Manor_Prehist/Walkie")
+			elif item_key == "markbad":
+				print("Hiding stout bottle from world")
+				SignalBus.emit_signal("hide", "Manor_Saloon/Stout Bottle")
+			elif item_key == "record":
+				print("Hiding record from world")
+			elif item_key == "tall_bottle":
+				print("Hiding Tall bottle from world")
+				SignalBus.emit_signal("hide", "Manor_Saloon/Tall Bottle")
+			elif item_key == "saloon_key":
+				print("Hiding saloon key from world")
+				SignalBus.emit_signal("hide", "Manor_Prehist/Cave Key Takeable")
+			
 	# Extra visibility logic
 	if StoryFlags.bone_used:
 		SignalBus.emit_signal("hide", "Manor_Prehist/Bone")
 
+	# ✅ NEW RULE: Bone used AND Cave Key in inventory → hide world cave key
+
 	SignalBus.emit_signal("hide", "BlackBackground")
 
-	# Defer visibility update to ensure scene is loaded
+	# Ensure visibility is updated after scene loads
 	get_tree().current_scene.call_deferred("update_visibility_from_flags")
