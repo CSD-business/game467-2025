@@ -12,8 +12,8 @@ func _ready():
 	SignalBus.connect("inspect_show",on_inspect_show)
 	randomizecodes()
 	
-	#$BlackBackground.show()
-	#SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
+	$BlackBackground.modulate = Color(1,1,1,1)
+	SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
 	
 
 	
@@ -132,6 +132,10 @@ func cause_change(key):
 		$"Manor/Main Doors".switch_resource(load("res://Resources/usable.tres"))
 		
 		StoryFlags.main_key_used = true
+	if key == "ladder":
+		SignalBus.emit_signal("display_dialogue", "We should be able to go down safely now.")
+		$Manor/Trapdoor.switch_resource(load("res://Resources/trapdoorenterable.tres"))
+		$Manor/Trapdoor.switch_resource(load("res://Resources/usable.tres"))
 #Function for changing between all of the rooms in the game
 #Hardcoded because it's a small game haha
 func on_enter_room(destination):
@@ -172,6 +176,12 @@ func on_enter_room(destination):
 		$Manor_Saloon.hide()
 		$Manor_Casino.show()
 		Global.current_room = "casino"
+	if destination == "powercore":
+		$Manor.hide()
+		$Manor_Powercore.show()
+		Global.current_room = "powercore"
+		await get_tree().create_timer(1).timeout
+		SignalBus.emit_signal("display_conversation", Cutscenes.endcutscenepart1, Cutscenes.endcutscenepart1speaker, "endcutscenepart1key")
 	await get_tree().create_timer(0.5).timeout
 	$BlackBackground/AnimationPlayer.play("Fade2Clear")
 
@@ -192,6 +202,10 @@ func on_inspect_show(show_key):
 		Global.in_menu = true
 		await get_tree().create_timer(1.3).timeout 
 		$Manor/FinalKeypad.show()
+	if show_key == "rug":
+		print("lala")
+		$Manor/Rug.hide()
+		$Manor/Trapdoor.show()
 		
 #Function to trigger cutscenes/change item resoureces
 func check_story_flags():
@@ -320,3 +334,10 @@ var Symbols = [
 	"♣",
 	"♦"
 ]
+
+
+func _on_final_keypad_on_pad_solve():
+	$"Manor/Main Doors".hide()
+	$Manor/OpenDoor.show()
+	$Manor/Ladder.show()
+	$Manor/Rug.switch_resource(load("res://Resources/rugopenable.tres"))

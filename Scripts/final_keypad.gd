@@ -3,10 +3,8 @@ extends Control
 @onready var yeartext = $VBoxContainer/Texts/HBoxContainer/Year/Label.text
 @onready var nametext = $VBoxContainer/Texts/HBoxContainer/Name/Label.text
 @onready var symboltext = $VBoxContainer/Texts/HBoxContainer/Symbol/Label.text
+signal on_pad_solve
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	print("Solution is " + Global.year_code + " " + Global.name_code + " " + Global.symbol_code )
-
 func key_press(section, digit, direction):
 	if section == "year"    :
 		yeartext[digit] = iterate_number(yeartext[digit], direction)
@@ -69,6 +67,8 @@ func check_code():
 	if yeartext == Global.year_code and nametext == Global.name_code and symboltext == Global.symbol_code:
 		print("yay")
 		Global.in_menu = false
+		SignalBus.emit_signal("display_conversation", Cutscenes.unlockfinalkeypad, Cutscenes.unlockfinalkeypadspeaker, Cutscenes.unlockfinalkeypadkey)
+		on_pad_solve.emit()
 		hide()
 	$VBoxContainer/Texts/HBoxContainer/Name/Label.modulate = Color(1,1,1)
 	$VBoxContainer/Texts/HBoxContainer/Year/Label.modulate = Color(1,1,1)

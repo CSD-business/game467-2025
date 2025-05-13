@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Takeable" load_steps=3 format=3 uid="uid://b1wtad5nsuhef"]
 
 [ext_resource type="Script" uid="uid://b2m6w2fqm504y" path="res://Scripts/takeable.gd" id="1_6y6lu"]
-[ext_resource type="Texture2D" uid="uid://cu8cii5krs3h" path="res://Assets/Images/placeholderinvitem.png" id="2_pjo1v"]
+[ext_resource type="Texture2D" uid="uid://4wr0or2ll6v6" path="res://Assets/Images/ladder.png" id="2_pjo1v"]
 
 [resource]
 script = ExtResource("1_6y6lu")
 show = false
 pick_up_text = ""
-inspect_text = ""
+inspect_text = "Where would I even need to use this? The only height in this whole building is in this room."
 texture = ExtResource("2_pjo1v")
-key = "flower"
+key = "ladder"
 metadata/_custom_type_script = "uid://b2m6w2fqm504y"
