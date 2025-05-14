@@ -11,8 +11,8 @@ func _ready():
 	# Detect which room is currently visible and store it
 	SignalBus.connect("inspect_show",on_inspect_show)
 	randomizecodes()
-	#$BlackBackground.modulate = Color(1,1,1,1)
-	#SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
+	$BlackBackground.modulate = Color(1,1,1,1)
+	SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
 	
 
 	
