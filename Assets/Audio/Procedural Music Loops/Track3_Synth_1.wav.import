@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://biht2o0rclge3"
+path="res://.godot/imported/Track3_Synth_1.wav-f59ff482c206fa3c039087ff7dc81bbd.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Procedural Music Loops/Track3_Synth_1.wav"
+dest_files=["res://.godot/imported/Track3_Synth_1.wav-f59ff482c206fa3c039087ff7dc81bbd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

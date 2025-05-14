@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqqfanhxwc346"]
+
+[ext_resource type="AudioStream" uid="uid://bcirdlaa7c1q5" path="res://Assets/Audio/Procedural Music Loops/Track1_Drum_1.wav" id="1_0vihl"]
+[ext_resource type="Script" uid="uid://cl8vpdv2e77n0" path="res://Scripts/procedural_music_generator.gd" id="1_tyja6"]
+[ext_resource type="AudioStream" uid="uid://b8s4nlfyxvuyb" path="res://Assets/Audio/Procedural Music Loops/Drum_2.wav" id="2_tyja6"]
+[ext_resource type="AudioStream" uid="uid://qvhgo0sn4hdh" path="res://Assets/Audio/Procedural Music Loops/Drum_3.wav" id="3_s15fh"]
+[ext_resource type="AudioStream" uid="uid://bnkh1b72rffq5" path="res://Assets/Audio/Procedural Music Loops/Drum_4.wav" id="4_u45dy"]
+[ext_resource type="AudioStream" uid="uid://biht2o0rclge3" path="res://Assets/Audio/Procedural Music Loops/Track3_Synth_1.wav" id="5_bj7fv"]
+[ext_resource type="AudioStream" uid="uid://cye243iphv88y" path="res://Assets/Audio/Procedural Music Loops/Synth_2.wav" id="6_54687"]
+[ext_resource type="AudioStream" uid="uid://cjo64hf4qwfbr" path="res://Assets/Audio/Procedural Music Loops/Synth_3.wav" id="7_d4rpd"]
+[ext_resource type="AudioStream" uid="uid://djgacqr30fv71" path="res://Assets/Audio/Procedural Music Loops/Track4_Blip_1.wav" id="8_6k7n6"]
+[ext_resource type="AudioStream" uid="uid://bbwqvtvswdjk5" path="res://Assets/Audio/Procedural Music Loops/Blip_2.wav" id="9_pbcn5"]
+[ext_resource type="AudioStream" uid="uid://usklagsqxia" path="res://Assets/Audio/Procedural Music Loops/Blip_3.wav" id="10_gwj4a"]
+
+[node name="Procedural Music Generator" type="Node"]
+script = ExtResource("1_tyja6")
+
+[node name="Drums" type="Node" parent="."]
+
+[node name="Drums1" type="AudioStreamPlayer" parent="Drums"]
+stream = ExtResource("1_0vihl")
+volume_db = -5.0
+
+[node name="Drums2" type="AudioStreamPlayer" parent="Drums"]
+stream = ExtResource("2_tyja6")
+volume_db = -5.0
+
+[node name="Drums3" type="AudioStreamPlayer" parent="Drums"]
+stream = ExtResource("3_s15fh")
+volume_db = -5.0
+
+[node name="Drums4" type="AudioStreamPlayer" parent="Drums"]
+stream = ExtResource("4_u45dy")
+volume_db = -5.0
+
+[node name="Synth" type="Node" parent="."]
+
+[node name="Synth1" type="AudioStreamPlayer" parent="Synth"]
+stream = ExtResource("5_bj7fv")
+volume_db = -8.0
+
+[node name="Synth2" type="AudioStreamPlayer" parent="Synth"]
+stream = ExtResource("6_54687")
+volume_db = -8.0
+
+[node name="Synth3" type="AudioStreamPlayer" parent="Synth"]
+stream = ExtResource("7_d4rpd")
+volume_db = -8.0
+
+[node name="Blip" type="Node" parent="."]
+
+[node name="Blip1" type="AudioStreamPlayer" parent="Blip"]
+stream = ExtResource("8_6k7n6")
+volume_db = -5.0
+
+[node name="Blip2" type="AudioStreamPlayer" parent="Blip"]
+stream = ExtResource("9_pbcn5")
+volume_db = -5.0
+
+[node name="Blip3" type="AudioStreamPlayer" parent="Blip"]
+stream = ExtResource("10_gwj4a")
+volume_db = -5.0
+
+[node name="DrumTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="SynthTimer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="BlipTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="DrumTimer" to="." method="_on_drum_timer_timeout"]
+[connection signal="timeout" from="SynthTimer" to="." method="_on_synth_timer_timeout"]
+[connection signal="timeout" from="BlipTimer" to="." method="_on_blip_timer_timeout"]

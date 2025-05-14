@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8s4nlfyxvuyb"
+path="res://.godot/imported/Drum_2.wav-e0c59c02f532a7b56970b7cef8a8a46a.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Procedural Music Loops/Drum_2.wav"
+dest_files=["res://.godot/imported/Drum_2.wav-e0c59c02f532a7b56970b7cef8a8a46a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

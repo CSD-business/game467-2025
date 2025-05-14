@@ -172,6 +172,8 @@ func on_enter_room(destination):
 			AudioPlayer.fade_out_music(AudioPlayer.get_node("CaveMusic"))
 		if Global.current_room == "saloon":
 			AudioPlayer.fade_out_music(AudioPlayer.get_node("SaloonMusic"))
+		if Global.current_room == "casino":
+			AudioPlayer.fade_out_music(AudioPlayer.get_node("CasinoMusic"))
 		Global.current_room = "manor"
 		AudioPlayer.fade_in_music(AudioPlayer.get_node("DefaultMusic"))
 	if destination == "saloon":
@@ -188,10 +190,14 @@ func on_enter_room(destination):
 		$Manor_Saloon.hide()
 		$Manor_Casino.show()
 		Global.current_room = "casino"
+		AudioPlayer.fade_out_music(AudioPlayer.get_node("DefaultMusic"))
+		AudioPlayer.fade_in_music(AudioPlayer.get_node("CasinoMusic"))
 	if destination == "powercore":
 		$Manor.hide()
 		$Manor_Powercore.show()
 		Global.current_room = "powercore"
+		AudioPlayer.fade_out_music(AudioPlayer.get_node("DefaultMusic"))
+		AudioPlayer.generate_music()
 		await get_tree().create_timer(1).timeout
 		SignalBus.emit_signal("display_conversation", Cutscenes.endcutscenepart1, Cutscenes.endcutscenepart1speaker, "endcutscenepart1key")
 	await get_tree().create_timer(0.5).timeout

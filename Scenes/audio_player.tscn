@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwy2my1egnnwi"]
+[gd_scene load_steps=10 format=3 uid="uid://cwy2my1egnnwi"]
 
 [ext_resource type="Script" uid="uid://dq8jc3lrm8d73" path="res://Scripts/Singletons/audio_player.gd" id="1_s0rld"]
 [ext_resource type="AudioStream" uid="uid://du0g2vy1ennts" path="res://Assets/Audio/GAME467_Track_3.mp3" id="2_dvgj0"]
@@ -6,10 +6,14 @@
 [ext_resource type="AudioStream" uid="uid://djiwqbb5dnts3" path="res://Assets/Audio/Cave_Track_2.mp3" id="3_s65mn"]
 [ext_resource type="AudioStream" uid="uid://bxh5jjjr7iub8" path="res://Assets/Audio/Scroll Foley Single 002.wav" id="4_d4rhe"]
 [ext_resource type="AudioStream" uid="uid://cbxu3u588ebo6" path="res://Assets/Audio/Saloon_Track_1.mp3" id="4_os84f"]
+[ext_resource type="AudioStream" uid="uid://exgsbqrpxuf2" path="res://Assets/Audio/Casino_Track_1.mp3" id="5_fnrru"]
 [ext_resource type="AudioStream" uid="uid://dk72unnfr578e" path="res://Assets/Audio/Door_Opening.wav" id="5_im4p7"]
+[ext_resource type="PackedScene" uid="uid://cqqfanhxwc346" path="res://Scenes/procedural_music_generator.tscn" id="9_lr7pj"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_s0rld")
+
+[node name="Procedural Music Generator" parent="." instance=ExtResource("9_lr7pj")]
 
 [node name="DefaultMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_dvgj0")
@@ -23,13 +27,17 @@ parameters/looping = true
 stream = ExtResource("4_os84f")
 parameters/looping = true
 
+[node name="CasinoMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fnrru")
+parameters/looping = true
+
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_jc3xp")
 
 [node name="TalkSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_d4rhe")
-volume_db = 8.0
+volume_db = 4.0
 
 [node name="DoorSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_im4p7")
-volume_db = 8.0
+volume_db = 4.0
