@@ -17,6 +17,8 @@ var inventory_data : Array = [] # Stores { "key": key, "slot": slot_index }
 @export var year_code   : String
 @export var name_code   : String
 @export var symbol_code : String
+@export var mark_resource_path : String = "res://Resources/markhascheckedsafe.tres"
+
 
 func find_first_empty_inventory_slot() -> int:
 	var inventory_ui = get_tree().get_root().get_node("Main/CanvasLayer/Inventory_UI")

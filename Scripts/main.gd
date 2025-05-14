@@ -11,9 +11,8 @@ func _ready():
 	# Detect which room is currently visible and store it
 	SignalBus.connect("inspect_show",on_inspect_show)
 	randomizecodes()
-	
-	$BlackBackground.modulate = Color(1,1,1,1)
-	SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
+	#$BlackBackground.modulate = Color(1,1,1,1)
+	#SignalBus.emit_signal("display_conversation", Cutscenes.intro, Cutscenes.introspeaker, "introcutscene")
 	
 
 	
@@ -28,7 +27,7 @@ func _input(event):
 		SaveManager.save_game()
 	elif event.is_action_pressed("load_game"):
 		SaveManager.apply_save_data()
-
+		update_visibility_from_flags()
 
 #Triggers when "Use" is selected from Clickable Options
 #It turns off some click functionality so the game doesn't get confused
@@ -60,19 +59,26 @@ func cause_change(key):
 		$"Manor/Middle Door".switch_resource(load("res://Resources/saloon_unlocked_inspectable.tres"))
 		$"Manor/Middle Door".switch_resource(load("res://Resources/usable.tres"))
 		SignalBus.emit_signal("display_dialogue", Cutscenes.unlock_saloon_door)
-		StoryFlags.saloon_unlocked = true 
-		Global.inventory_keys.erase("saloon_key")  
-		SignalBus.emit_signal("hide", "Manor_Prehist/Cave Key Takeable")
+
+		StoryFlags.saloon_unlocked = true
+		StoryFlags.saloon_key_used = true  # ✅ ADDED
+		Global.inventory_keys.erase("saloon_key")  # ✅ ADDED
+		SignalBus.emit_signal("hide", "Manor_Prehist/Cave Key Takeable")  # ✅ Optional: Hide physical node if it's still there
+
 		SaveManager.save_game()
+
+		
 	if key == "casino_key":
 		$"Manor/Right Door".switch_resource(load("res://Resources/casino_unlocked_enterable.tres"))
 		$"Manor/Right Door".switch_resource(load("res://Resources/casino_unlocked_inspectable.tres"))
 		$"Manor/Right Door".switch_resource(load("res://Resources/usable.tres"))
 		SignalBus.emit_signal("display_dialogue", Cutscenes.unlock_casino_door)
-		Global.inventory_keys.erase("saloon_key")	
+
 		StoryFlags.casino_unlocked = true
-		if $Manor_Saloon.has_node("Saloon Key"):
-			$Manor_Saloon/"Saloon Key".hide()
+		StoryFlags.casino_key_used = true  # ✅ ADDED
+		Global.inventory_keys.erase("casino_key")  # ✅ ADDED
+		SignalBus.emit_signal("hide", "Manor_Saloon/Saloon Key")  # ✅ Optional: Hide physical node if it's still there
+
 		SaveManager.save_game()
 	
 	if key == "bone":
@@ -116,22 +122,28 @@ func cause_change(key):
 		$Manor_Casino/Curly.switch_resource(load("res://Resources/curlypostjukebox.tres"))
 	if key == "recordfail":
 		SignalBus.emit_signal("display_conversation", Cutscenes.recordfail, Cutscenes.recordfailspeaker)
+		
+	
+	
 	if key == "coin":
 		print("coin taken")
 		SignalBus.emit_signal("display_dialogue", "The coin fits in the slot, and whirrs gently. I should be able to use the record now.")
 		$Manor_Casino/Jukebox.switch_resource(load("res://Resources/jukeboxready.tres"))
 		$Manor_Casino/Jukebox.switch_resource(load("res://Resources/jukeboxreadyuse.tres"))
-		
 		StoryFlags.coin_taken = true
-		if $Manor_Casino.has_node("Coin"):
-			$Manor_Casino/Coin.hide()
+		Global.inventory_keys.erase("coin")
+		SignalBus.emit_signal("hide", "$Manor_Casino/Coin")  # ✅ Optional: Hide physical node if it's still there
 		SaveManager.save_game()
 	if key == "main_key":
 		SignalBus.emit_signal("display_dialogue", "You and Curly both put your keys in, and a panel opens. Better get a closer look, this looks tough...")
 		$"Manor/Main Doors".switch_resource(load("res://Resources/main_door_haspanel.tres"))
 		$"Manor/Main Doors".switch_resource(load("res://Resources/usable.tres"))
-		
+		StoryFlags.final_room_open = true
 		StoryFlags.main_key_used = true
+		Global.inventory_keys.erase("main_key")
+		SaveManager.save_game()
+
+
 	if key == "ladder":
 		SignalBus.emit_signal("display_dialogue", "We should be able to go down safely now.")
 		$Manor/Trapdoor.switch_resource(load("res://Resources/trapdoorenterable.tres"))
@@ -232,12 +244,10 @@ func update_visibility_from_flags():
 
 		if $Manor_Prehist.has_node("Grug Happy"):
 			$Manor_Prehist/"Grug Happy".show()
-
 	if StoryFlags.has_checked_safe:
 		if $Manor_Saloon.has_node("Mark"):
+			print("func")
 			$Manor_Saloon/Mark.switch_resource(load("res://Resources/markhascheckedsafe.tres"))
-		if $Manor_Saloon.has_node("Safe"):
-			$Manor_Saloon/"Safe".hide()
 	if StoryFlags.has_listened_to_walkie:
 		if $Manor_Prehist.has_node("Grug Happy"):
 			$"Manor_Prehist/Grug Happy".switch_resource(load("res://Resources/grugidentity.tres"))

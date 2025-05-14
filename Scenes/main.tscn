@@ -1159,6 +1159,7 @@ scale = Vector2(0.741423, 0.674021)
 texture = ExtResource("16_h1bgf")
 
 [node name="Manor_Saloon" type="Node2D" parent="." groups=["Rooms"]]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Manor_Saloon"]
 z_index = -2
@@ -1276,8 +1277,7 @@ position = Vector2(350, 217)
 scale = Vector2(0.825951, -0.742702)
 inspectable_res = SubResource("Resource_55jeb")
 
-[node name="Manor_Casino" type="Node2D" parent="."]
-visible = false
+[node name="Manor_Casino" type="Node2D" parent="." groups=["Rooms"]]
 position = Vector2(400, 300)
 scale = Vector2(0.5, 0.5)
 
@@ -1351,7 +1351,7 @@ scale = Vector2(1.50344, 2.27215)
 inspectable_res = SubResource("Resource_ihvwq")
 takeable_res = ExtResource("36_jwpg7")
 
-[node name="Manor_Powercore" type="Node2D" parent="."]
+[node name="Manor_Powercore" type="Node2D" parent="." groups=["Rooms"]]
 visible = false
 z_index = -1
 position = Vector2(400, 300)

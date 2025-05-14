@@ -70,7 +70,6 @@ func _on_button_enter_pressed():
 		$"../Mark".switch_resource(load("res://Resources/markusefancywine.tres"))
 		$"../Mark".switch_resource(load("res://Resources/marktalkpostsafeunlock.tres"))
 		SignalBus.emit_signal("display_conversation", Cutscenes.unlock_safe, Cutscenes.unlock_safe_speaker, Cutscenes.unlock_safe_key)
-		SignalBus.emit_signal("hide","doors")
 		print("yay")
 		#signal something
 		Global.in_menu = false
